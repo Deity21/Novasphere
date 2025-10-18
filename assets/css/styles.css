@@ -276,3 +276,198 @@ section, .card, .project-card, .featured-card, .t-card, .form {
   .display{ font-size: clamp(28px, 9vw, 40px); }
 }
 
+/* =========================
+   NovaSphere Home Additions
+   ========================= */
+
+/* About / Stats Section */
+#about {
+  padding: 60px 0;
+  text-align: center;
+}
+#about h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+#about p {
+  color: var(--muted);
+  max-width: 700px;
+  margin: 0 auto 32px;
+  font-size: 1rem;
+}
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 28px;
+  margin-top: 20px;
+}
+.stats-grid div {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 16px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.stats-grid div:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow);
+}
+.stats-grid h3 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin: 0 0 4px;
+}
+.stats-grid p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Process Section */
+#process {
+  padding: 70px 0;
+  text-align: center;
+}
+#process h2 {
+  font-size: 2rem;
+  margin-bottom: 36px;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.process-step {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 30px 20px;
+  box-shadow: var(--shadow-sm);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.process-step:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow);
+}
+.process-step i {
+  font-size: 36px;
+  color: var(--primary);
+  margin-bottom: 10px;
+}
+.process-step h4 {
+  margin: 6px 0;
+}
+.process-step p {
+  color: var(--muted);
+  font-size: 15px;
+}
+
+/* Testimonials (Swiper) */
+#testimonials {
+  padding: 80px 0;
+}
+#testimonials .section-head h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+.swiper {
+  padding-bottom: 40px;
+}
+.swiper-slide {
+  transition: transform .3s ease;
+}
+.swiper-slide:hover {
+  transform: translateY(-5px);
+}
+.t-card {
+  height: auto;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  box-shadow: var(--shadow-sm);
+}
+.t-card p {
+  font-style: italic;
+  color: var(--ink);
+  font-size: 15.5px;
+}
+.t-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+.t-meta div span {
+  display: block;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* Newsletter Footer Extension */
+.newsletter {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.newsletter input {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--ink);
+}
+.newsletter button {
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--primary-2));
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform .25s ease;
+}
+.newsletter button:hover {
+  transform: translateY(-2px);
+}
+
+/* Footer Enhancements */
+.ns-footer {
+  background: var(--surface);
+  padding: 60px 0 20px;
+}
+.ns-footer h4 {
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.ns-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.ns-footer ul li {
+  margin-bottom: 8px;
+}
+.ns-footer ul li a {
+  color: var(--muted);
+  font-size: 15px;
+  transition: color .2s;
+}
+.ns-footer ul li a:hover {
+  color: var(--primary);
+}
+.socials a {
+  font-size: 20px;
+  color: var(--muted);
+  transition: color .25s;
+}
+.socials a:hover {
+  color: var(--primary);
+}
+
+/* Section spacing consistency */
+section {
+  scroll-margin-top: 80px;
+}

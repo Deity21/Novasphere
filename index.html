@@ -3,35 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="dark"/>
   <title>NovaSphere • Digital Product Studio</title>
-  <meta name="description" content="NovaSphere — We make apps, websites & brands. Orizon-style portfolio with bold case studies, animations, and micro-interactions." />
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta name="description" content="NovaSphere — We make apps, games, websites & brands. A digital studio for creative innovators." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
   <link rel="stylesheet" href="assets/css/styles.css"/>
+  
 </head>
 <body>
 
 <header class="ns-header">
   <div class="container nav-wrap">
     <a class="brand" href="index.html">
-        <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="88" height="88" />
-        NovaSphere
-        </a>
-
+      <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="88" height="88" />
+      NovaSphere
+    </a>
     <nav id="nav" class="nav">
+      <a href="#about">About</a>
       <a href="#services">Services</a>
       <a href="projects.html">Projects</a>
-      <a href="company.html">Company</a>
-      <a href="blog.html">Blog</a>
-      <a class="btn btn-primary" href="contact.html">Contact</a>
+      <a href="#testimonials">Testimonials</a>
+      <a href="contact.html" class="btn btn-primary">Contact</a>
     </nav>
     <div class="nav-ctrls">
-      <button id="themeToggle" class="icon-btn" aria-label="Toggle theme"><i class="fa-regular fa-moon"></i></button>
-      <button id="hamburger" class="icon-btn" aria-label="Open menu"><i class="fa-solid fa-bars-staggered"></i></button>
+      <button id="themeToggle" class="icon-btn"><i class="fa-regular fa-moon"></i></button>
+      <button id="hamburger" class="icon-btn"><i class="fa-solid fa-bars-staggered"></i></button>
     </div>
   </div>
 </header>
@@ -43,11 +43,10 @@
       <p class="eyebrow">
         700+ Projects completed ✦ Based in London, UK
         <img class="flag" style="height:.95em;width:auto;margin-left:.35em;vertical-align:-.12em"
-            src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/gb.svg" alt="UK" loading="lazy">
-
-        </p>
-
-      <h1 class="display">We make <span class="grad">apps, games, websites</span><br/>& brands</h1>
+          src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/gb.svg" alt="UK" loading="lazy">
+      </p>
+      <h1 class="display">We make <span class="grad">apps, games, websites</span><br>& brands</h1>
+      <p class="muted">From concept to code, we craft digital experiences that delight, scale, and convert.</p>
       <div class="cta-row">
         <a class="btn btn-primary btn-lg" href="contact.html#talk"><i class="fa-regular fa-message"></i> Let's talk</a>
         <div class="avatar-stack">
@@ -61,96 +60,86 @@
     <div class="hero-right" data-aos="zoom-in">
       <div class="hero-card">
         <div class="hc-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <img
-            class="mock"
-            data-parallax="0.12"
-            src="assets/img/samp4.jpg"
-            alt="Showcase placeholder"
-            />
-
+        <img class="mock" data-parallax="0.12" src="assets/img/samp4.jpg" alt="Showcase placeholder"/>
       </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container" data-aos="fade-up">
+    <h2>About NovaSphere</h2>
+    <p class="muted">We are a multidisciplinary team of designers, engineers, and strategists helping brands make their mark through technology and creativity.</p>
+    <div class="stats-grid">
+      <div><h3>700+</h3><p>Projects Completed</p></div>
+      <div><h3>50+</h3><p>Global Clients</p></div>
+      <div><h3>8+</h3><p>Years Experience</p></div>
+      <div><h3>98%</h3><p>Client Retention</p></div>
     </div>
   </section>
 
   <!-- Services -->
   <section id="services" class="container services">
-  <h2 data-aos="fade-up">What we do</h2>
-  <div class="grid-3">
-    <div class="card" data-aos="fade-up" data-aos-delay="50">
-      <i class="fa-solid fa-pen-ruler big"></i>
-      <h3>Design</h3>
-      <p class="muted">UI/UX, user flows, wireframes, design systems, and motion prototypes.</p>
+    <h2 data-aos="fade-up">What we do</h2>
+    <div class="grid-3">
+      <div class="card" data-aos="fade-up" data-aos-delay="50">
+        <i class="fa-solid fa-pen-ruler big"></i>
+        <h3>Design</h3>
+        <p class="muted">UI/UX, wireframes, systems, and animated prototypes.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="150">
+        <i class="fa-solid fa-code big"></i>
+        <h3>Development</h3>
+        <p class="muted">Apps, websites & games — robust, scalable, and fast.</p>
+      </div>
+      <div class="card" data-aos="fade-up" data-aos-delay="250">
+        <i class="fa-solid fa-wand-magic-sparkles big"></i>
+        <h3>Branding</h3>
+        <p class="muted">Naming, identity, guidelines, and launch campaigns.</p>
+      </div>
     </div>
+  </section>
 
-    <div class="card" data-aos="fade-up" data-aos-delay="150">
-      <i class="fa-solid fa-code big"></i>
-      <h3>Development</h3>
-      <p class="muted">Apps, websites & games — performant front-end, robust back-end, smooth deployment.</p>
+  <!-- Process -->
+  <section class="container" id="process" data-aos="fade-up">
+    <h2>Our Process</h2>
+    <div class="process-grid">
+      <div class="process-step"><i class="fa-solid fa-lightbulb big"></i><h4>1. Discovery</h4><p>We dive into your goals, audience, and product vision.</p></div>
+      <div class="process-step"><i class="fa-solid fa-palette big"></i><h4>2. Design</h4><p>We craft stunning visuals and user-friendly interfaces.</p></div>
+      <div class="process-step"><i class="fa-solid fa-gears big"></i><h4>3. Build</h4><p>We develop fast, secure, and scalable digital products.</p></div>
+      <div class="process-step"><i class="fa-solid fa-rocket big"></i><h4>4. Launch</h4><p>We deploy, monitor, and help you grow your product.</p></div>
     </div>
-
-    <div class="card" data-aos="fade-up" data-aos-delay="250">
-      <i class="fa-solid fa-wand-magic-sparkles big"></i>
-      <h3>Branding</h3>
-      <p class="muted">Naming, visual identity, guidelines, and launch assets that scale.</p>
-    </div>
-  </div>
-</section>
-
+  </section>
 
   <!-- Featured Case -->
   <section class="container featured" id="featured">
     <div class="featured-card" data-aos="fade-up">
-      <div class="fc-media">
-        <img src="assets/img/isoraa.png" alt="Case preview"/>
-      </div>
+      <div class="fc-media"><img src="assets/img/isoraa.png" alt="Case preview"/></div>
       <div class="fc-body">
-        <div class="pill-row">
-          <span class="pill">#UX Audit</span>
-          <span class="pill">#Product Redesign</span>
-          <span class="pill">#Web Dev</span>
-        </div>
+        <div class="pill-row"><span class="pill">#UX Audit</span><span class="pill">#Product Redesign</span><span class="pill">#Web Dev</span></div>
         <h3>Optimizing GRC software for top institutions</h3>
         <ul class="meta">
           <li><b>Client:</b> SaltyCloud, Texas, USA</li>
           <li><b>Stack:</b> React, Python, AWS</li>
-          <li><b>Timeline:</b> 12 months, ongoing</li>
-          <li><b>Results:</b> 2× faster workflows, 50% shorter time-to-market</li>
+          <li><b>Timeline:</b> 12 months</li>
         </ul>
         <a class="btn btn-secondary" href="projects.html">Explore case study</a>
       </div>
     </div>
   </section>
 
-  <!-- Logos -->
-  <section class="logos">
-    <div class="container logos-row" data-aos="fade-up">
-      <span>Trusted by teams at</span>
-      <i class="fa-brands fa-aws"></i>
-      <i class="fa-brands fa-react"></i>
-      <i class="fa-brands fa-python"></i>
-      <i class="fa-brands fa-unity"></i>
-      <i class="fa-solid fa-shield-halved"></i>
-      <i class="fa-brands fa-figma"></i>
-    </div>
-  </section>
-
   <!-- Testimonials -->
   <section class="container" id="testimonials">
-    <div class="section-head"><h2 data-aos="fade-up">Clients say nice things</h2></div>
+    <div class="section-head"><h2 data-aos="fade-up">What Clients Say</h2></div>
     <div class="swiper" data-aos="fade-up">
       <div class="swiper-wrapper">
-        <div class="swiper-slide t-card">
-          <p>“NovaSphere moved our redesign from idea to impact in weeks. Our NPS jumped.”</p>
-          <div class="t-meta"><img src="https://i.pravatar.cc/80?img=7"/><div><b>Michelle</b><span>COO, Fintech</span></div></div>
-        </div>
-        <div class="swiper-slide t-card">
-          <p>“We shipped a casino platform that just works — fast, secure, gorgeous.”</p>
-          <div class="t-meta"><img src="https://i.pravatar.cc/80?img=3"/><div><b>Arman</b><span>Founder, Gaming</span></div></div>
-        </div>
-        <div class="swiper-slide t-card">
-          <p>“They don't miss. From UX to APIs, an A-team.”</p>
-          <div class="t-meta"><img src="https://i.pravatar.cc/80?img=12"/><div><b>Ola</b><span>CTO, Health</span></div></div>
-        </div>
+        <div class="swiper-slide t-card"><p>“NovaSphere turned our vision into a sleek SaaS app — incredible speed.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=7"/><div><b>Michelle</b><span>COO, Fintech</span></div></div></div>
+        <div class="swiper-slide t-card"><p>“They designed and built a casino platform that performs flawlessly.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=3"/><div><b>Arman</b><span>Founder, Gaming</span></div></div></div>
+        <div class="swiper-slide t-card"><p>“The team’s attention to detail and animations blew us away.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=12"/><div><b>Ola</b><span>CTO, Health</span></div></div></div>
+        <div class="swiper-slide t-card"><p>“Our brand launch went viral thanks to their design strategy.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=14"/><div><b>Camila</b><span>CMO, Fashion</span></div></div></div>
+        <div class="swiper-slide t-card"><p>“Phenomenal team. Always responsive, always ahead of schedule.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=19"/><div><b>Lucas</b><span>Startup Founder</span></div></div></div>
+        <div class="swiper-slide t-card"><p>“Animations and transitions made our product shine — A+ work.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=27"/><div><b>Yasmin</b><span>CEO, Tech Studio</span></div></div></div>
+        <div class="swiper-slide t-card"><p>“They deliver enterprise-quality work for startups — a rare find.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=30"/><div><b>Daniel</b><span>Manager, SaaS</span></div></div></div>
+        <div class="swiper-slide t-card"><p>“10/10 collaboration — design, dev, and brand alignment done right.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=40"/><div><b>Sophia</b><span>Creative Director</span></div></div></div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
@@ -172,46 +161,29 @@
   <div class="container footer-grid">
     <div>
       <div class="brand b-lg"><span class="brand-mark">◔</span> NovaSphere</div>
-      <p class="muted">We make apps, websites & brands — with taste.</p>
+      <p class="muted">Design • Development • Branding — crafted with precision and care.</p>
+      <div class="newsletter">
+        <input type="email" placeholder="Subscribe for updates">
+        <button><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
       <div class="socials">
-        
-        <a href="https://www.instagram.com/novasphereco?igsh=MzJoYjUxOTd3M3V2&utm_source=qr" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://www.instagram.com/novasphereco" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
         <a href="https://t.me/NovaSphereco" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
-        
+        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
       </div>
     </div>
-    <div><h4>Studio</h4><ul><li><a href="company.html#about">About</a></li><li><a href="company.html#process">Process</a></li><li><a href="company.html#team">Team</a></li></ul></div>
-    <div><h4>Work</h4><ul><li><a href="projects.html#tabs">Projects</a></li><li><a href="projects.html#featured">Case study</a></li></ul></div>
-    <div><h4>Contact</h4><ul><li><a href="contact.html#quote">Get a quote</a></li><li><a href="contact.html#call">Book a call</a></li><li><a href="contact.html">Email us</a></li></ul></div>
+    <div><h4>Studio</h4><ul><li><a href="#about">About</a></li><li><a href="#process">Process</a></li><li><a href="company.html#team">Team</a></li></ul></div>
+    <div><h4>Work</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="#featured">Case Studies</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li><a href="contact.html#quote">Get a quote</a></li><li><a href="contact.html#call">Book a call</a></li><li><a href="mailto:hello@novasphere.co">Email us</a></li></ul></div>
   </div>
-  <div class="container legal">
-    <span>© <span id="year"></span> NovaSphere</span>
-    <span class="muted">Made with ♥ • Montreal & Lagos</span>
-  </div>
+  <div class="container legal"><span>© <span id="year"></span> NovaSphere. All rights reserved.</span></div>
 </footer>
 
 <!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  /* paste the exact JS from /assets/js/app.js here if you keep single-file,
-     or keep this page as-is and create a file assets/js/app.js and paste there */
-</script>
-<script>
-  // (Inline minimal to avoid missing file during first run)
-  const root = document.documentElement;
-  const themeBtn = document.getElementById('themeToggle');
-  if(themeBtn){ themeBtn.onclick = ()=> root.classList.toggle('dark'); }
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.getElementById('nav');
-  if(hamburger && nav){ hamburger.onclick = () => nav.classList.toggle('open'); }
-  AOS.init({ duration: 650, once: true, offset: 70 });
-  document.getElementById('year').textContent = new Date().getFullYear();
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('page-ready');
-  });
-</script>
+<script src="assets/js/app.js"></script>
+
 </body>
 </html>
