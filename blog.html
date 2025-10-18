@@ -1,77 +1,279 @@
 <!DOCTYPE html>
-<html lang="en" class="has-transitions">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mini blog — NovaSphere</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="assets/css/styles.css"/>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>NovaSphere — Insights & Case Studies</title>
+<meta name="description" content="NovaSphere Blog — design, development, games, branding, and backend insights from our digital product studio."/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#ffffff;
+  --surface:#f8fafc;
+  --ink:#0f172a;
+  --muted:#475569;
+  --line:#e6edf5;
+  --chip:#eef2ff;
+  --primary:#6a4cff;
+  --accent:#2ad4ff;
+  --radius:16px;
+  --shadow-sm:0 8px 24px rgba(15,23,42,.06);
+  --shadow:0 18px 60px rgba(15,23,42,.12);
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;border-radius:10px;}
+.container{width:min(1180px,92vw);margin:auto;}
+.btn{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;padding:.8rem 1.1rem;border-radius:999px;font-weight:600;cursor:pointer;box-shadow:var(--shadow-sm);transition:.3s;}
+.btn:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+header{position:sticky;top:0;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50;}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+.logo{display:flex;align-items:center;gap:.6rem;font-weight:900;font-size:1.2rem;}
+.logo-badge{width:12px;height:12px;border-radius:4px;background:linear-gradient(45deg,var(--primary),var(--accent));}
+.menu{display:flex;gap:1.4rem;color:var(--muted);}
+.menu a:hover,.menu a.active{color:var(--primary);font-weight:600;}
+.hero{padding:70px 0 30px;text-align:center;}
+.hero h1{font-size:clamp(34px,5vw,52px);margin:0;background:linear-gradient(90deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:var(--muted);max-width:60ch;margin:10px auto 0;}
+.hero .search{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-top:1.5rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.7rem 1rem;max-width:480px;margin-inline:auto;}
+.hero input{border:none;background:transparent;outline:none;flex:1;color:var(--ink);font-size:1rem;}
+.filters{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin:26px 0;}
+.chip{padding:.45rem .9rem;background:var(--chip);border:1px solid var(--line);border-radius:999px;font-weight:600;color:var(--muted);cursor:pointer;transition:.3s;}
+.chip:hover{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:0;}
+.chip.active{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:0;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px;margin:30px 0 60px;}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm);transition:.4s;}
+.card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.card .media img{aspect-ratio:16/9;width:100%;object-fit:cover;transition:transform .6s;}
+.card:hover .media img{transform:scale(1.05);}
+.card .body{padding:20px;}
+.card h3{margin:.4rem 0;font-size:1.2rem;line-height:1.3;}
+.card .meta{font-size:.9rem;color:var(--muted);}
+.card .tags{margin-top:.4rem;font-size:.9rem;color:var(--primary);}
+.featured{background:linear-gradient(135deg,var(--primary) 10%,var(--accent));color:#fff;border-radius:var(--radius);padding:40px;margin-top:30px;box-shadow:var(--shadow);}
+.featured h2{margin-top:0;}
+footer{border-top:1px solid var(--line);padding:50px 0;color:var(--muted);}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px;}
+.foot-grid strong{font-size:1.1rem;color:var(--ink);}
+.socials{display:flex;gap:12px;margin-top:10px;}
+.socials a{color:var(--muted);font-size:20px;}
+.socials a:hover{color:var(--primary);}
+@media(max-width:820px){.foot-grid{grid-template-columns:1fr;text-align:center;}.menu{display:none;}}
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .6s,transform .6s;}
+.reveal.in{opacity:1;transform:none;}
+</style>
 </head>
 <body>
-<header class="ns-header">
-  <div class="container nav-wrap">
-    <a class="brand" href="index.html">
-        <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="88" height="88" />
-        NovaSphere
-        </a>
-    <nav id="nav" class="nav">
-      <a href="index.html#services">Services</a>
+<header>
+  <div class="container nav">
+    <div class="logo"><span class="logo-badge"></span> NovaSphere</div>
+    <nav class="menu">
+      <a href="index.html">Home</a>
       <a href="projects.html">Projects</a>
       <a href="company.html">Company</a>
-      <a href="blog.html">Blog</a>
-      <a class="btn btn-primary" href="contact.html">Contact</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="contact.html">Contact</a>
     </nav>
-    <div class="nav-ctrls"><button id="themeToggle" class="icon-btn"><i class="fa-regular fa-moon"></i></button><button id="hamburger" class="icon-btn"><i class="fa-solid fa-bars-staggered"></i></button></div>
+    <a href="contact.html" class="btn">Let's Talk</a>
   </div>
 </header>
 
-<main>
-  <section class="container page-hero">
-    <h1>Mini blog</h1>
-    <p class="muted">Short notes on design, engineering, and shipping better things.</p>
+<main class="container">
+  <section class="hero">
+    <h1 class="reveal">Insights, Stories & Case Studies</h1>
+    <p class="reveal">Thoughts from NovaSphere — exploring design, development, brand strategy, and innovation shaping digital products worldwide.</p>
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/></svg>
+      <input id="searchInput" type="search" placeholder="Search topics or keywords"/>
+    </div>
+    <div class="filters" id="filters"></div>
   </section>
 
-  <section class="container blog-grid">
-    <article class="blog-card">
-      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop" alt="cover"/>
-      <div class="body">
-        <h3>Ship then iterate</h3>
-        <p class="muted">Why launching a thin slice beats perfect plans every time.</p>
-        <a class="link" href="#">Read</a>
-      </div>
-    </article>
-    <article class="blog-card">
-      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="cover"/>
-      <div class="body">
-        <h3>Design tokens done right</h3>
-        <p class="muted">Scalable systems for multi-brand, multi-platform products.</p>
-        <a class="link" href="#">Read</a>
-      </div>
-    </article>
-    <article class="blog-card">
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="cover"/>
-      <div class="body">
-        <h3>Latency budgets</h3>
-        <p class="muted">Keeping pages snappy with smart budgets and audits.</p>
-        <a class="link" href="#">Read</a>
-      </div>
-    </article>
+  <section class="featured reveal">
+    <h2>Featured Insight</h2>
+    <p><b>Design Systems That Scale</b> — How NovaSphere unifies interfaces across platforms for speed, cohesion, and accessibility.</p>
+    <a class="btn" href="?post=design-systems-that-scale">Read full article</a>
+  </section>
+
+  <section id="indexView" class="grid"></section>
+
+  <section id="postView" style="display:none">
+    <article id="postBody"></article>
   </section>
 </main>
 
-<footer class="ns-footer">
-  <div class="container legal"><span>© <span id="year"></span> NovaSphere</span><span class="muted">All rights reserved</span></div>
+<footer class="container">
+  <div class="foot-grid">
+    <div>
+      <strong>NovaSphere</strong>
+      <p>We design, build, and scale digital products that delight. Read our insights to learn how creativity meets code.</p>
+      <div class="socials">
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-telegram"></i></a>
+      </div>
+    </div>
+    <div>
+      <strong>Explore</strong>
+      <p><a href="projects.html">Projects</a><br><a href="company.html">Company</a><br><a href="contact.html">Contact</a></p>
+    </div>
+    <div>
+      <strong>Newsletter</strong>
+      <form onsubmit="event.preventDefault();subscribe();">
+        <input id="newsEmail" type="email" required placeholder="you@company.com" style="padding:.6rem .9rem;border:1px solid var(--line);border-radius:999px;width:100%;margin-bottom:.4rem;"/>
+        <button class="btn" type="submit">Subscribe</button>
+      </form>
+      <small id="newsHint">Get monthly studio stories. No spam.</small>
+    </div>
+  </div>
 </footer>
 
 <script>
-  const hamburger=document.getElementById('hamburger'),nav=document.getElementById('nav');if(hamburger&&nav){hamburger.onclick=()=>nav.classList.toggle('open');}
-  document.getElementById('year').textContent=new Date().getFullYear();
-</script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('page-ready');
-  });
+// Sample posts (short for demo)
+const POSTS = [
+  {
+    slug: 'design-systems',
+    title: 'Design Systems That Scale',
+    excerpt: 'Our 7-part framework to ship consistent UI faster — tokens, patterns, and playgrounds.',
+    date: '2025-07-10',
+    cover: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1600&auto=format&fit=crop',
+    tags: ['UI', 'Components', 'Figma']
+  },
+  {
+    slug: 'web-performance',
+    title: 'Building Lightning-Fast Web Experiences',
+    excerpt: 'How we optimize load time, Core Web Vitals, and performance budgets for global brands.',
+    date: '2025-06-22',
+    cover: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Performance', 'SEO', 'Lighthouse']
+  },
+  {
+    slug: 'brand-identity',
+    title: 'Brand Identity that Converts',
+    excerpt: 'Color psychology, tone, and consistency — the design behind emotional resonance.',
+    date: '2025-05-04',
+    cover: 'https://images.unsplash.com/photo-1522205408450-add114ad53fe?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Branding', 'Design', 'Logo']
+  },
+  {
+    slug: 'game-ux',
+    title: 'Game UX: Crafting Immersion through Motion',
+    excerpt: 'Why animations, feedback loops, and microdelays define player satisfaction.',
+    date: '2025-03-12',
+    cover: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop',
+    tags: ['GameDev', 'UX', 'Animation']
+  },
+  {
+    slug: 'roblox-economy',
+    title: 'Inside the Roblox Economy: Creating Games That Pay',
+    excerpt: 'How NovaSphere helps creators design balanced economies, fair pricing, and premium loops for sustainable success.',
+    date: '2025-08-14',
+    cover: 'https://images.unsplash.com/photo-1606112219348-204d7d8b94ee?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Roblox', 'GameDev', 'Monetization']
+  },
+  {
+    slug: 'casino-platform-ux',
+    title: 'Reinventing Casino UX for Modern Players',
+    excerpt: 'Designing trust, thrill, and speed into casino platforms through modern UI, animations, and realtime feedback.',
+    date: '2025-07-25',
+    cover: 'https://images.unsplash.com/photo-1504274066651-8d31a536b11a?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Casino', 'UI', 'Animation']
+  },
+  {
+    slug: 'telegram-bots',
+    title: 'Telegram Bots That Sell: From Concept to Deployment',
+    excerpt: 'A look at how NovaSphere builds high-performing Telegram bots for sales, crypto tools, and engagement funnels.',
+    date: '2025-06-14',
+    cover: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Bots', 'Automation', 'Telegram']
+  },
+  {
+    slug: 'marketing-automation',
+    title: 'Marketing Automation for Digital Brands',
+    excerpt: 'We integrate APIs, CRMs, and analytics to turn campaigns into continuous, data-driven engines.',
+    date: '2025-06-03',
+    cover: 'https://images.unsplash.com/photo-1556761175-129418cb2dfe?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Marketing', 'Automation', 'CRM']
+  },
+  {
+    slug: 'ai-casino-bots',
+    title: 'AI Casino Bots: Smart Betting Meets Data Science',
+    excerpt: 'We build adaptive casino bots using probability models and predictive analytics for smarter gaming strategies.',
+    date: '2025-05-25',
+    cover: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Casino', 'AI', 'Bots']
+  },
+  {
+    slug: 'roblox-level-design',
+    title: 'Roblox Level Design: The Art of Playability',
+    excerpt: 'Exploring player flow, lighting, and storytelling inside Roblox environments that keep users returning.',
+    date: '2025-05-08',
+    cover: 'Mansion Tycoon.png',
+    tags: ['Roblox', 'Design', 'Environment']
+  },
+  {
+    slug: 'casino-payments',
+    title: 'Securing Casino Payments with Web3 Gateways',
+    excerpt: 'Why we use crypto-ready APIs and KYC systems for frictionless, secure transactions in modern casino apps.',
+    date: '2025-04-29',
+    cover: 'assets/img/vickers.jpg',
+    tags: ['Casino', 'Web3', 'Security']
+  },
+  {
+    slug: 'app-launch-checklist',
+    title: 'App Launch Checklist for 2025',
+    excerpt: 'Design reviews, analytics, marketing handoffs — a refined checklist to guarantee smooth public releases.',
+    date: '2025-04-15',
+    cover: 'assets/img/photo_2025-06-28_18-13-01.jpg',
+    tags: ['Apps', 'Launch', 'Product']
+  },
+  {
+    slug: 'digital-marketing-ai',
+    title: 'How AI Is Transforming Digital Marketing Campaigns',
+    excerpt: 'Predictive targeting, smart bidding, and automated storytelling in the new age of marketing intelligence.',
+    date: '2025-03-19',
+    cover: 'https://images.unsplash.com/photo-1533750349088-cd871a92f312?q=80&w=1600&auto=format&fit=crop',
+    tags: ['Marketing', 'AI', 'Analytics']
+  },
+  {
+    slug: 'bot-economy',
+    title: 'The Rise of the Bot Economy',
+    excerpt: 'From chatbots to trading assistants — why automation is reshaping how businesses scale operations online.',
+    date: '2025-02-26',
+    cover: 'assets/img/tonfarm.jpg',
+    tags: ['Bots', 'Automation', 'Business']
+  },
+  {
+    slug: 'roblox-community',
+    title: 'Building Loyal Communities in Roblox Games',
+    excerpt: 'Events, feedback loops, and social rewards — how engagement design sustains thriving game communities.',
+    date: '2025-01-30',
+    cover: 'New york.png',
+    tags: ['Roblox', 'Community', 'Engagement']
+  }
+];
+
+
+const filtersEl=document.getElementById('filters');
+const indexEl=document.getElementById('indexView');
+const qsa=s=>Array.from(document.querySelectorAll(s));
+
+function renderFilters(){
+ const topics=['All','Design','Development','Branding','Games','APIs'];
+ filtersEl.innerHTML=topics.map(t=>`<div class="chip${t==='All'?' active':''}" data-chip="${t}">${t}</div>`).join('');
+ qsa('.chip').forEach(ch=>ch.addEventListener('click',()=>{qsa('.chip').forEach(c=>c.classList.remove('active'));ch.classList.add('active');renderGrid(ch.dataset.chip);}));}
+function renderGrid(filter='All',query=''){
+ const posts=POSTS.filter(p=>(filter==='All'||p.tags.includes(filter))&&(p.title.toLowerCase().includes(query)||p.excerpt.toLowerCase().includes(query)));
+ indexEl.innerHTML=posts.map(p=>`<article class="card reveal"><a class="media" href="?post=${p.slug}"><img src="${p.cover}" alt="${p.title}"></a><div class="body"><div class="meta">${new Date(p.date).toLocaleDateString()} • NovaSphere</div><h3>${p.title}</h3><p>${p.excerpt}</p><div class="tags">${p.tags.map(t=>'#'+t).join(' ')}</div></div></article>`).join('');
+ qsa('.reveal').forEach(el=>io.observe(el));
+}
+function subscribe(){const email=document.getElementById('newsEmail');const hint=document.getElementById('newsHint');if(!email.checkValidity())return email.reportValidity();hint.textContent='Subscribed successfully!';email.value='';}
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target);}}),{threshold:.15});
+document.getElementById('searchInput').addEventListener('input',e=>renderGrid(document.querySelector('.chip.active').dataset.chip,e.target.value.trim().toLowerCase()));
+renderFilters();renderGrid();
 </script>
 </body>
 </html>

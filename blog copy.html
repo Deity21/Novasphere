@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurevia — Insights & Case Notes</title>
+  <meta name="description" content="Aurevia’s blog covering design, development (web, apps, games), branding, and backend/API craft. Deep dives, case studies, and playbooks." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!--
+    HOW THIS FILE WORKS
+    • This is a complete blog system in a single file (index + post view).
+    • "Index view" lists articles with filters for each service you render.
+    • Clicking a card opens the full article view via ?post=slug routing.
+    • Edit POSTS[] at the bottom to add or update articles per service.
+    • Replace placeholder images with your assets (static/images/...).
+  -->
+
+  <style>
+    :root{
+      /* Aurevia palette (matches your portfolio vibe) */
+      --bg:#ffffff;           /* page background */
+      --surface:#f7f9fc;      /* cards/surfaces */
+      --ink:#0f172a;          /* primary text */
+      --muted:#475569;        /* secondary text */
+      --line:#e6edf5;         /* borders */
+      --chip:#eef2ff;         /* tag pills */
+      --primary:#6a4cff;      /* purple */
+      --primary-2:#532bff;    /* darker purple */
+      --accent:#2ad4ff;       /* cyan */
+      --radius:16px;
+      --shadow-sm:0 8px 24px rgba(15,23,42,.06);
+      --shadow:0 18px 60px rgba(15,23,42,.12);
+    }
+    [data-theme="dark"]{
+      --bg:#0b1220;
+      --surface:#0f172a;
+      --ink:#e5ecff;
+      --muted:#9fb0c9;
+      --line:#1f2a44;
+      --chip:#101a33;
+      --shadow-sm:0 8px 24px rgba(3,8,23,.4);
+      --shadow:0 18px 60px rgba(3,8,23,.6);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1140px,92vw);margin-inline:auto}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;background:var(--ink);color:#fff;border:none;padding:.8rem 1rem;border-radius:14px;font-weight:600;box-shadow:var(--shadow-sm);cursor:pointer}
+    .btn.outline{background:transparent;color:var(--ink);border:1px solid var(--line)}
+    .btn.pill{border-radius:999px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.6);backdrop-filter:saturate(1.2) blur(8px);border-bottom:1px solid var(--line)}
+    [data-theme="dark"] header{background:rgba(11,18,32,.6)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .nav .left{display:flex;align-items:center;gap:1.25rem}
+    .logo{display:flex;align-items:center;gap:.6rem;font-weight:800}
+    .logo-badge{width:10px;height:10px;border-radius:4px;background:linear-gradient(45deg,var(--primary),var(--accent))}
+    .menu{display:flex;gap:1rem;color:var(--muted)}
+    .menu a.active{color:var(--ink);font-weight:600}
+    .nav-ctas{display:flex;align-items:center;gap:.75rem}
+
+    /* Hero */
+    .hero{padding:56px 0 22px}
+    .hero h1{font-size:clamp(28px,4vw,44px);margin:0 0 .6rem}
+    .hero p{color:var(--muted);margin:0}
+    .hero-row{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;margin-top:18px}
+    .search{display:flex;align-items:center;gap:.6rem;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.6rem 1rem}
+    .search input{border:none;background:transparent;outline:none;min-width:220px;color:var(--ink)}
+
+    /* Filters */
+    .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin:16px 0 8px}
+    .chip{padding:.4rem .7rem;background:var(--chip);border:1px solid var(--line);border-radius:999px;color:var(--muted);font-weight:600;cursor:pointer}
+    .chip.active{background:linear-gradient(90deg,var(--primary),var(--accent));border-color:transparent;color:#fff}
+
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin:18px 0 42px}
+    @media (max-width:1024px){.grid{grid-template-columns:repeat(2,1fr)}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+    .card .media{aspect-ratio:16/9;background:#0000;position:relative;overflow:hidden}
+    .card .media img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+    .card:hover .media img{transform:scale(1.04)}
+    .card .body{padding:16px}
+    .eyebrow{display:flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.9rem}
+    .eyebrow .dot{width:6px;height:6px;border-radius:999px;background:var(--primary)}
+    .card h3{margin:.5rem 0 .3rem;font-size:1.05rem}
+    .meta{display:flex;gap:10px;color:var(--muted);font-size:.9rem}
+
+    /* Post view */
+    .post{display:grid;grid-template-columns:260px 1fr;gap:28px;margin:28px 0 64px}
+    @media (max-width:900px){.post{grid-template-columns:1fr}}
+    .toc{position:sticky;top:84px;align-self:start;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+    .toc h4{margin:0 0 .6rem}
+    .toc a{display:block;color:var(--muted);padding:.35rem 0}
+    .post-article{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .post-cover{aspect-ratio:21/9;background:#0003;overflow:hidden}
+    .post-cover img{width:100%;height:100%;object-fit:cover}
+    .post-body{padding:min(56px,6vw)}
+    .post-body h1{margin:0 0 6px;font-size:clamp(28px,4vw,44px)}
+    .post-body .sub{color:var(--muted);margin:0 0 20px}
+    .post-body h2{margin:30px 0 10px}
+    .post-body p{color:var(--ink);line-height:1.7}
+    .callout{padding:16px 18px;background:linear-gradient(90deg,var(--chip),#fff0);border:1px dashed var(--line);border-radius:12px;color:var(--muted)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);padding:36px 0 60px;color:var(--muted)}
+    .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:18px}
+    @media (max-width:820px){.foot-grid{grid-template-columns:1fr}}
+
+    /* Animations */
+    .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease, transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+    /* Search: make it fill the row */
+.search{
+  display:flex;align-items:center;gap:.6rem;
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:999px;padding:.6rem 1rem;
+  width:100%;                    /* NEW */
+}
+.search input{
+  border:none;background:transparent;outline:none;
+  min-width:220px;color:var(--ink);
+  width:100%;                    /* NEW */
+}
+
+/* Filters: base */
+.filters{
+  display:flex;flex-wrap:wrap;gap:.5rem;margin:16px 0 8px;
+  justify-content:flex-start;    /* NEW */
+}
+.chip{
+  padding:.4rem .7rem;background:var(--chip);
+  border:1px solid var(--line);border-radius:999px;
+  color:var(--muted);font-weight:600;cursor:pointer;
+  white-space:nowrap;            /* NEW */
+}
+
+/* --- Mobile layout fix --- */
+@media (max-width: 768px){
+  .hero-row{
+    grid-template-columns:1fr;   /* stack vertically */
+    align-items:start;
+  }
+  .search{ order:1; }
+  .search input{ min-width:0; }  /* prevent overflow */
+
+  /* Turn chips into a horizontal scroll row */
+  .filters{
+    order:2;
+    flex-wrap:nowrap;            /* single row */
+    overflow-x:auto;
+    overflow-y:hidden;
+    white-space:nowrap;
+    gap:.6rem;
+    padding-bottom:6px;
+    margin-top:.5rem;
+    scroll-snap-type:x proximity;
+  }
+  .filters::-webkit-scrollbar{ height:6px; }
+  .filters::-webkit-scrollbar-thumb{
+    background:var(--line); border-radius:999px;
+  }
+  .chip{ scroll-snap-align:start; }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="left">
+        <div class="logo" aria-label="Aurevia">
+          <span class="logo-badge"></span>
+          <span>Aurevia</span>
+        </div>
+        <nav class="menu" aria-label="Primary">
+          <a href="portfolio.html" class="active">Projects</a>
+          <a href="index.html">home</a>
+          
+          <a href="about.html">About</a>
+          <a href="contacts.html">Contact</a>
+        </nav>
+      </div>
+      <div class="nav-ctas">
+        <button id="themeBtn" class="btn pill outline" title="Toggle theme">🌗&nbsp;Theme</button>
+        <a class="btn pill" href="contacts.html">Request a quote</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="reveal">Insights & Case Notes</h1>
+      <p class="reveal" style="max-width:60ch">A polished blog for every service we render—Design, Web & Mobile Development, Game Dev, Branding, and API/Backend. Research-backed posts, playbooks, and behind‑the‑scenes from real projects.</p>
+      <div class="hero-row">
+        <div class="search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/></svg>
+          <input id="searchInput" type="search" placeholder="Search articles, e.g. design systems" aria-label="Search articles"/>
+        </div>
+        <div class="filters" id="filters"></div>
+      </div>
+    </section>
+
+    <!-- GRID (Index) -->
+    <section id="indexView" class="grid"></section>
+
+    <!-- POST VIEW (single) -->
+    <section id="postView" style="display:none">
+      <article class="post">
+        <aside class="toc" id="toc">
+          <h4>On this page</h4>
+          <div id="tocLinks"></div>
+          <div style="margin-top:10px">
+            <a href="blog.html" class="btn pill outline" style="width:100%;justify-content:center">← Back to blog</a>
+          </div>
+        </aside>
+        <div class="post-article">
+          <div class="post-cover" id="postCover"></div>
+          <div class="post-body" id="postBody"></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="container">
+    <div class="foot-grid">
+      <div>
+        <strong>Aurevia</strong>
+        <p style="margin:.4rem 0 0">We design & build products across web, mobile, games, and brand systems. This blog shares our process, tools, and results.</p>
+      </div>
+      <div>
+        <div style="font-weight:700;margin-bottom:.5rem">Contact</div>
+        <div>Aureviastudiosc@gmail.com</div>
+        <div>@Aurevia on Telegram • Discord • WhatsApp</div>
+      </div>
+      <div>
+        <div style="font-weight:700;margin-bottom:.5rem">Newsletter</div>
+        <form id="newsForm" onsubmit="event.preventDefault(); subscribe();">
+          <div class="search" style="padding:.5rem .8rem">
+            <input id="newsEmail" type="email" required placeholder="you@company.com" aria-label="Email"/>
+            <button class="btn pill" type="submit">Subscribe</button>
+          </div>
+          <small id="newsHint" style="display:block;margin-top:.4rem;color:var(--muted)">No spam. Unsubscribe anytime.</small>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /***********************
+     * Data (Edit this)
+     ***********************/
+    const SERVICES = [
+      "Design",
+      "Web app",
+      "Mobile app",
+      "Game",
+      "Branding",
+      "API/Backend",
+      "Consulting"
+    ];
+
+    /**
+     * POSTS — add your articles here. One object per post.
+     * service: one of SERVICES
+     * cover: image url
+     * heroTone: optional gradient overlay for the cover
+     * sections: array of { h2, body (HTML), id optional }
+     */
+    const POSTS = [
+      {
+        slug: "design-systems-that-scale",
+        title: "Design systems that scale across web, mobile, and TV",
+        excerpt: "Our 7-part framework to ship consistent UI faster—tokens, patterns, and playgrounds.",
+        date: "2025-07-15",
+        readMins: 9,
+        service: "Design",
+        cover: "Globaldex.png",
+        heroTone: "linear-gradient(120deg, rgba(106,76,255,.3), rgba(42,212,255,.15))",
+        tags: ["tokens","components","a11y"],
+        sections: [
+          {h2:"Principles", body:`<p>We keep systems small, legible, and composable. Start with a <strong>token</strong> layer (colors, spacing, radii), then add <strong>patterns</strong> (buttons, inputs) and finally <strong>templates</strong> (forms, dashboards). Each commit ships docs and usage examples.</p>`},
+          {h2:"Tooling", body:`<p>Figma libraries map 1:1 with code via a <em>design tokens</em> pipeline. Stories cover hover/active/focus. CI checks color contrast & bundle size.</p>`},
+          {h2:"Outcomes", body:`<p>On recent client work we cut UI dev time by <strong>34%</strong>, reduced regressions, and unlocked theming (light/dark/brand variants).</p>`},
+        ]
+      },
+      {
+        slug: "from-brief-to-prod-web",
+        title: "From brief to production: our web app delivery playbook",
+        excerpt: "Blueprint we use to launch reliable web apps with measurable outcomes.",
+        date: "2025-06-30",
+        readMins: 11,
+        service: "Web app",
+        cover: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1600&auto=format&fit=crop",
+        heroTone: "linear-gradient(120deg, rgba(83,43,255,.35), rgba(0,0,0,.15))",
+        tags: ["flask","react","devops"],
+        sections: [
+          {h2:"Discovery", body:`<p>We align on <strong>jobs‑to‑be‑done</strong>, KPIs, and constraints. The backlog stays small—only items that move the KPI.</p>`},
+          {h2:"Engineering", body:`<p>We favor typed APIs, contract tests, and staged rollouts. Observability ships day one (logs, traces, uptime).</p>`},
+          {h2:"Handover", body:`<p>We write an <strong>operator’s manual</strong>—runbooks, dashboards, and cost guardrails—to keep your team fast after launch.</p>`},
+        ]
+      },
+      {
+        slug: "native-mobile-offline-first",
+        title: "Offline‑first mobile: patterns that keep users unblocked",
+        excerpt: "Sync engines, background tasks, and conflict resolution that feel invisible.",
+        date: "2025-05-28",
+        readMins: 8,
+        service: "Mobile app",
+        cover: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=1600&auto=format&fit=crop",
+        heroTone: "linear-gradient(120deg, rgba(42,212,255,.35), rgba(106,76,255,.2))",
+        tags: ["ios","android","sync"],
+        sections: [
+          {h2:"Caching layers", body:`<p>We segment caches by volatility and risk. Sensitive data uses <em>secure enclaves</em> with short TTLs.</p>`},
+          {h2:"Background sync", body:`<p>Use incremental deltas, exponential backoff, and dedupe. UI shows resilient states—queued, syncing, resolved.</p>`},
+        ]
+      },
+      {
+        slug: "shipping-small-games-fast",
+        title: "Shipping small games fast without sacrificing feel",
+        excerpt: "Tight loops, juicy feedback, and analytics that guide balancing.",
+        date: "2025-04-19",
+        readMins: 7,
+        service: "Game",
+        cover: "https://images.unsplash.com/photo-1542751110-97427bbecf20?q=80&w=1600&auto=format&fit=crop",
+        heroTone: "linear-gradient(120deg, rgba(106,76,255,.35), rgba(42,212,255,.2))",
+        tags: ["roblox","unity","telemetry"],
+        sections: [
+          {h2:"Core loop", body:`<p>We prototype <strong>moment‑to‑moment</strong> joy first, then build progression, economy, and cosmetics.</p>`},
+          {h2:"Live ops", body:`<p>Feature flags, A/B balancing, and seasonal updates to keep retention healthy.</p>`},
+        ]
+      },
+      {
+        slug: "brand-systems-that-convert",
+        title: "Brand systems that convert without being loud",
+        excerpt: "Modern identity, motion rules, and consistent asset pipelines.",
+        date: "2025-03-08",
+        readMins: 6,
+        service: "Branding",
+        cover: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?q=80&w=1600&auto=format&fit=crop",
+        heroTone: "linear-gradient(120deg, rgba(0,0,0,.15), rgba(83,43,255,.25))",
+        tags: ["logo","motion","guidelines"],
+        sections: [
+          {h2:"System", body:`<p>We define motion tokens, avatar crops, and social templates so teams can ship on‑brand in minutes.</p>`},
+          {h2:"Results", body:`<p>Average CTR lift 12–18% on launch campaigns; improved recall in surveys.</p>`},
+        ]
+      },
+      {
+        slug: "battle-tested-apis",
+        title: "Battle‑tested APIs: secure, observable, and cost‑aware",
+        excerpt: "From schema design to rate limiting and incident playbooks.",
+        date: "2025-02-21",
+        readMins: 10,
+        service: "API/Backend",
+        cover: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1600&auto=format&fit=crop",
+        heroTone: "linear-gradient(120deg, rgba(16,185,129,.25), rgba(83,43,255,.25))",
+        tags: ["flask","postgres","security"],
+        sections: [
+          {h2:"Security", body:`<p>Keys rotate; PII is compartmentalized; all write paths are idempotent. Threat modeling is a checklist item per PR.</p>`},
+          {h2:"Observability", body:`<p>We ship structured logs, tracing, and SLO dashboards from day zero. Incident templates cut MTTR in half.</p>`},
+        ]
+      },
+      {
+        slug: "consulting-sprints",
+        title: "Consulting sprints that unblock teams in a week",
+        excerpt: "Focused sprints that deliver clarity: audits, roadmaps, and hard decisions.",
+        date: "2025-01-12",
+        readMins: 5,
+        service: "Consulting",
+        cover: "isoraa.png",
+        heroTone: "linear-gradient(120deg, rgba(42,212,255,.25), rgba(0,0,0,.05))",
+        tags: ["audits","roadmap"],
+        sections: [
+          {h2:"Format", body:`<p>Kickoff, evidence gathering, and a concise report: risks, options, our recommendation, and the first two moves.</p>`},
+        ]
+      }
+    ];
+
+    /***********************
+     * Helpers
+     ***********************/
+    const qs = s => document.querySelector(s);
+    const qsa = s => Array.from(document.querySelectorAll(s));
+    const fmtDate = s => new Date(s + 'T00:00:00').toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
+
+    function getParam(name){
+      const u = new URL(location.href);
+      return u.searchParams.get(name);
+    }
+
+    function setTheme(t){
+      document.documentElement.setAttribute('data-theme', t);
+      localStorage.setItem('aurevia_theme', t);
+    }
+
+    function toggleTheme(){
+      const cur = document.documentElement.getAttribute('data-theme')||'light';
+      setTheme(cur==='dark'?'light':'dark');
+    }
+
+    function subscribe(){
+      const email = qs('#newsEmail');
+      const hint = qs('#newsHint');
+      if(!email.checkValidity()) return email.reportValidity();
+      hint.textContent = 'Thanks! You\'re on the list.';
+    }
+
+    // Simple reveal on scroll
+    const io = new IntersectionObserver(entries => entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    }), {threshold:.12});
+
+    /***********************
+     * Index rendering
+     ***********************/
+    const filtersEl = qs('#filters');
+    const indexEl = qs('#indexView');
+
+    function renderFilters(){
+      const frag = document.createDocumentFragment();
+      const allBtn = chip('All');
+      allBtn.classList.add('active');
+      frag.appendChild(allBtn);
+      for(const s of SERVICES){ frag.appendChild(chip(s)); }
+      filtersEl.innerHTML=''; filtersEl.appendChild(frag);
+    }
+
+    function chip(label){
+      const b = document.createElement('button');
+      b.className='chip'; b.textContent=label; b.setAttribute('data-chip',label);
+      b.addEventListener('click',()=>{
+        qsa('.chip').forEach(c=>c.classList.remove('active'));
+        b.classList.add('active');
+        const q = qs('#searchInput').value.trim().toLowerCase();
+        renderGrid(label==='All'?null:label, q);
+      });
+      return b;
+    }
+
+    function renderGrid(service=null, query=''){
+      const posts = POSTS.filter(p=>!service || p.service===service)
+        .filter(p=>!query || (p.title+" "+p.excerpt+" "+p.tags.join(' ')).toLowerCase().includes(query));
+      indexEl.innerHTML = posts.map(cardHTML).join('');
+      qsa('.card').forEach(el=>io.observe(el));
+      qsa('.reveal').forEach(el=>io.observe(el));
+      // hook card clicks
+      qsa('[data-slug]').forEach(a=>a.addEventListener('click', (e)=>{
+        e.preventDefault();
+        const slug = a.getAttribute('data-slug');
+        history.pushState({},'',`?post=${slug}`);
+        route();
+      }));
+    }
+
+    function cardHTML(p){
+      return `
+      <article class="card reveal">
+        <a href="?post=${p.slug}" data-slug="${p.slug}" class="media" aria-label="Open ${p.title}">
+          <img src="${p.cover}" alt="${p.title} cover" loading="lazy"/>
+        </a>
+        <div class="body">
+          <div class="eyebrow"><span class="dot"></span><span>${p.service}</span> · <span class="meta">${fmtDate(p.date)} • ${p.readMins} min</span></div>
+          <h3><a href="?post=${p.slug}" data-slug="${p.slug}">${p.title}</a></h3>
+          <p class="muted" style="color:var(--muted);margin:0 0 .6rem">${p.excerpt}</p>
+          <div class="meta">${p.tags.map(t=>`#${t}`).join(' ')}</div>
+        </div>
+      </article>`;
+    }
+
+    /***********************
+     * Post rendering
+     ***********************/
+    const postView = qs('#postView');
+    const indexView = qs('#indexView');
+
+    function renderPost(slug){
+      const p = POSTS.find(x=>x.slug===slug);
+      if(!p){ history.replaceState({},'', './'); return route(); }
+
+      // Cover
+      qs('#postCover').innerHTML = `<div style="width:100%;height:100%;background:${p.heroTone||'transparent'}"><img alt="${p.title}" src="${p.cover}"></div>`;
+
+      // Body
+      const body = qs('#postBody');
+      const headerHTML = `
+        <div class="eyebrow"><span class="dot"></span><span>${p.service}</span> · <span class="meta">${fmtDate(p.date)} • ${p.readMins} min</span></div>
+        <h1>${p.title}</h1>
+        <p class="sub">${p.excerpt}</p>
+      `;
+      const sectionsHTML = p.sections.map((s,i)=>{
+        const id = s.id || `${p.slug}-s${i+1}`;
+        return `<section id="${id}"><h2>${s.h2}</h2>${s.body}</section>`
+      }).join('');
+      const outro = `
+        <div class="callout" style="margin-top:24px">
+          Want results like this? <a href="#contact" style="font-weight:700;color:var(--primary)">Start a project</a> or say hi on Telegram/Discord.
+        </div>`;
+      body.innerHTML = headerHTML + sectionsHTML + outro;
+
+      // Build TOC
+      const toc = qs('#tocLinks');
+      toc.innerHTML = p.sections.map((s,i)=>{
+        const id = s.id || `${p.slug}-s${i+1}`;
+        return `<a href="#${id}">${s.h2}</a>`
+      }).join('');
+
+      // SEO JSON‑LD for single post
+      injectJSONLD(p);
+    }
+
+    function injectJSONLD(p){
+      const el = document.getElementById('jsonld');
+      if(el) el.remove();
+      const data = {
+        "@context":"https://schema.org",
+        "@type":"BlogPosting",
+        headline: p.title,
+        datePublished: p.date,
+        image: [p.cover],
+        author: {"@type":"Organization","name":"Aurevia"},
+        articleSection: p.service,
+        keywords: p.tags.join(', ')
+      };
+      const script = document.createElement('script');
+      script.type='application/ld+json';
+      script.id='jsonld';
+      script.textContent = JSON.stringify(data);
+      document.head.appendChild(script);
+    }
+
+    /***********************
+     * Router
+     ***********************/
+    function route(){
+      const slug = getParam('post');
+      if(slug){
+        indexView.style.display='none';
+        qs('.hero-row').style.display='none';
+        postView.style.display='block';
+        renderPost(slug);
+        window.scrollTo({top:0,behavior:'smooth'});
+      } else {
+        postView.style.display='none';
+        qs('.hero-row').style.display='grid';
+        indexView.style.display='grid';
+        renderFilters();
+        renderGrid(null, qs('#searchInput').value.trim().toLowerCase());
+        // Remove single-post JSON-LD when back to index
+        const el = document.getElementById('jsonld'); if(el) el.remove();
+      }
+    }
+
+    /***********************
+     * Wire‑up
+     ***********************/
+    // Theme
+    const saved = localStorage.getItem('aurevia_theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(saved);
+    document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+
+    // Search
+    document.getElementById('searchInput').addEventListener('input', (e)=>{
+      const active = document.querySelector('.chip.active');
+      const service = active && active.getAttribute('data-chip')!=='All' ? active.getAttribute('data-chip') : null;
+      renderGrid(service, e.target.value.trim().toLowerCase());
+    });
+
+    // Back/forward navigation
+    window.addEventListener('popstate', route);
+
+    // Initial paint
+    route();
+
+    // reveal
+    qsa('.reveal').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
