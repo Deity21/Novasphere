@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" class="has-transitions">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Company — NovaSphere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+<header class="ns-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="88" height="88" />
+        NovaSphere
+        </a>
+    <nav id="nav" class="nav">
+      <a href="index.html#services">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="company.html">Company</a>
+      <a href="blog.html">Blog</a>
+      <a class="btn btn-primary" href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-ctrls"><button id="themeToggle" class="icon-btn"><i class="fa-regular fa-moon"></i></button><button id="hamburger" class="icon-btn"><i class="fa-solid fa-bars-staggered"></i></button></div>
+  </div>
+</header>
+
+<main>
+  <section id="about" class="container page-hero">
+    <h1>Company</h1>
+    <p class="muted">NovaSphere is a product studio helping startups & enterprises build delightful software.</p>
+  </section>
+
+  <section class="container values">
+    <div class="grid-3">
+      <div class="card" data-aos="fade-up"><h3>Speed × Taste</h3><p class="muted">We ship fast without ugly compromises.</p></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="100"><h3>Outcome-driven</h3><p class="muted">We optimize for business impact and user joy.</p></div>
+      <div class="card" data-aos="fade-up" data-aos-delay="200"><h3>Transparent</h3><p class="muted">Clear pricing, weekly demos, shared roadmaps.</p></div>
+    </div>
+  </section>
+
+  <section id="process" class="container process">
+    <h2 data-aos="fade-up">Process that scales</h2>
+    <ol class="steps">
+      <li data-aos="fade-left"><span>01</span> Discover & align</li>
+      <li data-aos="fade-left" data-aos-delay="100"><span>02</span> UX & prototype</li>
+      <li data-aos="fade-left" data-aos-delay="200"><span>03</span> Build & integrate</li>
+      <li data-aos="fade-left" data-aos-delay="300"><span>04</span> Launch & iterate</li>
+    </ol>
+  </section>
+
+  <section id="team" class="container team">
+    <h2 data-aos="fade-up">Tiny team, big energy</h2>
+    <div class="swiper" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide profile">
+          <img src="https://i.pravatar.cc/240?img=1" alt="profile"/>
+          <h4>Damien Wills</h4><p class="muted">Founder • Full-stack</p>
+        </div>
+        <div class="swiper-slide profile">
+          <img src="https://i.pravatar.cc/240?img=8" alt="profile"/>
+          <h4>Mina</h4><p class="muted">Design Lead</p>
+        </div>
+        <div class="swiper-slide profile">
+          <img src="https://i.pravatar.cc/240?img=14" alt="profile"/>
+          <h4>Kenji</h4><p class="muted">Game Dev</p>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="ns-footer">
+  <div class="container legal"><span>© <span id="year"></span> NovaSphere</span><span class="muted">All rights reserved</span></div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  const hamburger=document.getElementById('hamburger'),nav=document.getElementById('nav');if(hamburger&&nav){hamburger.onclick=()=>nav.classList.toggle('open');}
+  AOS.init({duration:650,once:true,offset:70});
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-ready');
+  });
+</script>
+</body>
+</html>

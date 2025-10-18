@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="has-transitions">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — NovaSphere</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Vendors -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+
+  <!-- Brand-new page stylesheet (do NOT use styles.css here) -->
+  <link rel="stylesheet" href="assets/css/projects-pro.css"/>
+</head>
+<body>
+  <!-- Decorative global effects -->
+  <div class="bg-gradients"></div>
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="grid-overlay"></div>
+
+  <header class="ns-header">
+    <div class="nav-wrap">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="64" height="64"/>
+        <span>NovaSphere</span>
+      </a>
+
+      <nav id="nav" class="nav">
+        <a href="index.html#services">Services</a>
+        <a class="active" href="projects.html">Projects</a>
+        <a href="company.html">Company</a>
+        <a href="blog.html">Blog</a>
+        <a class="btn btn-primary" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-ctrls">
+        <button id="themeToggle" class="icon-btn" title="Toggle theme">
+          <i class="fa-regular fa-moon"></i>
+        </button>
+        <button id="hamburger" class="icon-btn" title="Menu">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO: full-bleed, fills viewport -->
+    <section class="hero" id="top">
+      <div class="hero-content" data-aos="fade-up">
+        <h1 class="fx-shine">
+          We build <span class="grad">games</span>, <span class="grad">bots</span>, <span class="grad">apps</span>, <span class="grad">AI</span> & <span class="grad">growth</span> engines.
+        </h1>
+        <p class="muted">
+          Roblox worlds, casinos & sportsbooks, Telegram bots, web & mobile apps, AI/ML pipelines, Web3, DevOps, AR/VR, security audits, digital marketing—and everything in between.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary btn-lg" href="contact.html"><i class="fa-solid fa-rocket-launch"></i> Start a project</a>
+          <a class="btn btn-ghost btn-lg" href="#gallery"><i class="fa-regular fa-images"></i> Explore work</a>
+        </div>
+
+        <!-- Service badges marquee -->
+        <div class="marquee" aria-hidden="true">
+          <ul class="marquee-track">
+            <li><i class="fa-solid fa-robot"></i> Bots & Automation</li>
+            <li><i class="fa-solid fa-brain"></i> AI/ML</li>
+            <li><i class="fa-solid fa-gamepad"></i> Games</li>
+            <li><i class="fa-solid fa-wand-magic-sparkles"></i> UI/UX</li>
+            <li><i class="fa-solid fa-bullhorn"></i> Digital Marketing</li>
+            <li><i class="fa-brands fa-telegram"></i> Mini-apps</li>
+            <li><i class="fa-solid fa-globe"></i> Web & App Dev</li>
+            <li><i class="fa-brands fa-ethereum"></i> Web3</li>
+            <li><i class="fa-solid fa-shield-halved"></i> Security</li>
+            <li><i class="fa-solid fa-cloud-arrow-up"></i> DevOps</li>
+            <li><i class="fa-solid fa-chart-line"></i> Data/BI</li>
+            <li><i class="fa-solid fa-vr-cardboard"></i> AR/VR</li>
+            <li><i class="fa-solid fa-cart-shopping"></i> E-commerce</li>
+            <li><i class="fa-solid fa-pen-nib"></i> Content & Branding</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats" data-aos="zoom-in">
+        <div class="stat"><span class="num" data-target="250">0</span>k+<small>Players</small></div>
+        <div class="stat"><span class="num" data-target="120">0</span>+<small>Projects</small></div>
+        <div class="stat"><span class="num" data-target="98">0</span>%<small>On-time</small></div>
+        <div class="stat"><span class="num" data-target="24">0</span>/<span>7</span><small>Support</small></div>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <section class="tabs" id="filters">
+      <button class="tab active" data-filter="all"><i class="fa-solid fa-layer-group"></i> All</button>
+      
+    </section>
+
+    <!-- FEATURED CASE -->
+    <section class="featured alt" id="featured">
+      <div class="featured-card" data-aos="fade-up">
+        <div class="fc-media framed">
+          <img src="assets/img/carrace.png" alt="Roblox Rally Racer"/>
+        </div>
+        <div class="fc-body">
+          <div class="pill-row">
+            <span class="pill">#Roblox</span>
+            <span class="pill">#Backend</span>
+            <span class="pill">#3D</span>
+          </div>
+          <h3>Roblox Rally Racer — physics-based chassis, live events, monetization</h3>
+          <ul class="meta">
+            <li><b>Stack:</b> Lua, Blender, Python tools, PlayFab</li>
+            <li><b>Results:</b> 250k+ plays, 4.6★ rating</li>
+          </ul>
+          <a class="btn btn-secondary" href="https://linktr.ee/xperiastudi0" target="_blank" rel="noopener">Read the case</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY GRID -->
+    <section class="projects-grid" id="gallery">
+      <!-- Roblox -->
+      <article class="project-card" data-cat="roblox" data-aos="zoom-in">
+        <div class="pc-media"><img src="assets/img/openworld.png" alt="Roblox racer"/></div>
+        <div class="pc-body">
+          <span class="pill">Roblox</span>
+          <h3>Hover City</h3>
+          <p class="muted">Open-world hover bike with quests, garage, and PvP arena.</p>
+          <a class="chip-link" href="https://linktr.ee/xperiastudi0" target="_blank">See more →</a>
+        </div>
+      </article>
+
+      <!-- Casino / Sportsbook -->
+      <article class="project-card" data-cat="casino" data-aos="zoom-in" data-aos-delay="40">
+        <div class="pc-media"><img src="assets/img/glam.png" alt="Glamorilla Slots UI"/></div>
+        <div class="pc-body">
+          <span class="pill">Casino</span>
+          <h3>Glamorilla Slots</h3>
+          <p class="muted">Slots + crash game + wallet, blazing-fast admin and risk engine.</p>
+        </div>
+      </article>
+
+      <article class="project-card" data-cat="casino" data-aos="zoom-in" data-aos-delay="80">
+        <div class="pc-media"><img src="assets/img/lana.jpg" alt="Lana Casino homepage"/></div>
+        <div class="pc-body">
+          <span class="pill">Casino</span>
+          <h3>Lana Casino</h3>
+          <p class="muted">Conversion-focused lobby with animated promos and quick sign-up flows.</p>
+        </div>
+      </article>
+
+      <article class="project-card" data-cat="casino" data-aos="zoom-in" data-aos-delay="120">
+        <div class="pc-media"><img src="assets/img/3dx.jpg" alt="Rocket Crash game"/></div>
+        <div class="pc-body">
+          <span class="pill">Casino</span>
+          <h3>Rocket Crash 3DX</h3>
+          <p class="muted">Smooth curve engine, fair-RNG seeding, and real-time multiplier feed.</p>
+        </div>
+      </article>
+
+      <!-- Games -->
+      <article class="project-card" data-cat="games" data-aos="zoom-in" data-aos-delay="160">
+        <div class="pc-media"><img src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?q=80&w=1200&auto=format&fit=crop" alt="Indie game"/></div>
+        <div class="pc-body">
+          <span class="pill">Games</span>
+          <h3>Skyline Tactics</h3>
+          <p class="muted">Turn-based sci-fi with shader-driven VFX and tactics AI.</p>
+        </div>
+      </article>
+
+      <!-- UI/UX -->
+      <article class="project-card" data-cat="uiux" data-aos="zoom-in" data-aos-delay="200">
+        <div class="pc-media"><img src="assets/img/isoraa.png" alt="UI/UX Dashboard"/></div>
+        <div class="pc-body">
+          <span class="pill">UI/UX</span>
+          <h3>Isora Dashboard</h3>
+          <p class="muted">Accessibility-first redesign for governance/compliance tools.</p>
+        </div>
+      </article>
+
+      <article class="project-card" data-cat="uiux" data-aos="zoom-in" data-aos-delay="240">
+        <div class="pc-media"><img src="assets/img/novaa.png" alt="Design system"/></div>
+        <div class="pc-body">
+          <span class="pill">UI/UX</span>
+          <h3>Nova UI Kit</h3>
+          <p class="muted">Design tokens, components, and motion guidelines.</p>
+        </div>
+      </article>
+
+      <!-- Web & Apps -->
+      <article class="project-card" data-cat="web" data-aos="zoom-in" data-aos-delay="280">
+        <div class="pc-media"><img src="assets/img/easybets.png" alt="Sportsbook web app"/></div>
+        <div class="pc-body">
+          <span class="pill">Web App</span>
+          <h3>EasyBets Sportsbook</h3>
+          <p class="muted">Real-time odds, betslip UX, and multi-currency wallet.</p>
+        </div>
+      </article>
+
+      <!-- Bots -->
+      <article class="project-card" data-cat="bots" data-aos="zoom-in" data-aos-delay="320">
+        <div class="pc-media icon-tile"><i class="fa-brands fa-telegram"></i></div>
+        <div class="pc-body">
+          <span class="pill">Bots</span>
+          <h3>Telegram Mini-Apps</h3>
+          <p class="muted">TON Farm, shop flows, referral trees, leaderboards, and webhooks.</p>
+        </div>
+      </article>
+
+      <!-- AI/ML -->
+      <article class="project-card" data-cat="ai" data-aos="zoom-in" data-aos-delay="360">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-brain"></i></div>
+        <div class="pc-body">
+          <span class="pill">AI/ML</span>
+          <h3>Recommendation Pipelines</h3>
+          <p class="muted">Vector search, RAG, and fine-tuned LLMs powering content & support.</p>
+        </div>
+      </article>
+
+      <!-- Web3 -->
+      <article class="project-card" data-cat="web3" data-aos="zoom-in" data-aos-delay="400">
+        <div class="pc-media icon-tile"><i class="fa-brands fa-ethereum"></i></div>
+        <div class="pc-body">
+          <span class="pill">Web3</span>
+          <h3>NFT/Token Utilities</h3>
+          <p class="muted">Mint sites, staking dashboards, and wallet-auth gated content.</p>
+        </div>
+      </article>
+
+      <!-- Digital Marketing -->
+      <article class="project-card" data-cat="marketing" data-aos="zoom-in" data-aos-delay="440">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="pc-body">
+          <span class="pill">Marketing</span>
+          <h3>Growth & Funnels</h3>
+          <p class="muted">SEO/SEM, landing page CRO, email drips, social creatives, analytics.</p>
+        </div>
+      </article>
+
+      <!-- Data/BI -->
+      <article class="project-card" data-cat="data" data-aos="zoom-in" data-aos-delay="480">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="pc-body">
+          <span class="pill">Data/BI</span>
+          <h3>Realtime Dashboards</h3>
+          <p class="muted">ETL pipelines, warehouse modeling, and KPI visualization.</p>
+        </div>
+      </article>
+
+      <!-- DevOps -->
+      <article class="project-card" data-cat="devops" data-aos="zoom-in" data-aos-delay="520">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-cloud-arrow-up"></i></div>
+        <div class="pc-body">
+          <span class="pill">DevOps</span>
+          <h3>Ship & Scale</h3>
+          <p class="muted">CI/CD, Docker/K8s, monitoring & alerting, cost optimization.</p>
+        </div>
+      </article>
+
+      <!-- Security -->
+      <article class="project-card" data-cat="security" data-aos="zoom-in" data-aos-delay="560">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="pc-body">
+          <span class="pill">Security</span>
+          <h3>Audits & Hardening</h3>
+          <p class="muted">OWASP, threat modeling, key management, and SSO/2FA.</p>
+        </div>
+      </article>
+
+      <!-- AR/VR -->
+      <article class="project-card" data-cat="arvr" data-aos="zoom-in" data-aos-delay="600">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-vr-cardboard"></i></div>
+        <div class="pc-body">
+          <span class="pill">AR/VR</span>
+          <h3>Immersive Labs</h3>
+          <p class="muted">Unity prototypes, WebXR scenes, and spatial interactions.</p>
+        </div>
+      </article>
+
+      <!-- E-commerce -->
+      <article class="project-card" data-cat="ecom" data-aos="zoom-in" data-aos-delay="640">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-cart-shopping"></i></div>
+        <div class="pc-body">
+          <span class="pill">E-commerce</span>
+          <h3>Headless Stores</h3>
+          <p class="muted">Product feeds, carts, payments, analytics & attribution.</p>
+        </div>
+      </article>
+
+      <!-- Content/Branding -->
+      <article class="project-card" data-cat="content" data-aos="zoom-in" data-aos-delay="680">
+        <div class="pc-media icon-tile"><i class="fa-solid fa-pen-nib"></i></div>
+        <div class="pc-body">
+          <span class="pill">Content</span>
+          <h3>Brand Systems</h3>
+          <p class="muted">Naming, voice, style guides, and creative production pipelines.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- LOGOS STRIP -->
+    <section class="logo-rail" aria-label="Trusted by">
+      <div class="rail" data-aos="fade-up">
+        
+      </div>
+    </section>
+
+    <!-- CTA RIBBON -->
+    <section class="cta-ribbon" data-aos="zoom-in">
+      <h3>Have an idea? We’ll build it end-to-end.</h3>
+      <a class="btn btn-primary" href="contact.html"><i class="fa-regular fa-paper-plane"></i> Get a quote</a>
+    </section>
+  </main>
+
+  <footer class="ns-footer">
+    <div class="legal">
+      <span>© <span id="year"></span> NovaSphere</span>
+      <span class="muted">All rights reserved</span>
+    </div>
+  </footer>
+
+  <!-- Vendors -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+  <!-- Page JS -->
+  <script>
+    // Mobile nav
+    const hamburger = document.getElementById('hamburger');
+    const nav = document.getElementById('nav');
+    if (hamburger && nav) hamburger.onclick = () => nav.classList.toggle('open');
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    document.documentElement.dataset.theme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
+    themeToggle.onclick = () => {
+      const cur = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+      document.documentElement.dataset.theme = cur;
+      localStorage.setItem('theme', cur);
+    };
+
+    // AOS
+    AOS.init({ duration: 700, once: true, offset: 80 });
+
+    // Counters
+    const counters = [...document.querySelectorAll('.num')];
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target, to = +el.dataset.target;
+        let cur = 0; const step = Math.max(1, Math.round(to / 60));
+        const tick = () => {
+          cur += step; if (cur > to) cur = to;
+          el.textContent = cur.toString();
+          if (cur < to) requestAnimationFrame(tick);
+        };
+        tick(); io.unobserve(el);
+      });
+    }, { threshold: .4 });
+    counters.forEach(c => io.observe(c));
+
+    // Tabs filtering
+    const tabs = document.querySelectorAll('.tabs .tab');
+    const cards = () => [...document.querySelectorAll('.project-card')];
+    tabs.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabs.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        cards().forEach(card => {
+          const match = f === 'all' || card.dataset.cat === f;
+          card.classList.toggle('hide', !match);
+          if (match) {
+            card.animate([{opacity:0, transform:'translateY(8px)'},{opacity:1, transform:'translateY(0)'}], {duration:250});
+          }
+        });
+      });
+    });
+
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Subtle pointer parallax on hero
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - .5;
+      const y = (e.clientY - r.top) / r.height - .5;
+      hero.style.setProperty('--tiltX', (y * -4).toFixed(2) + 'deg');
+      hero.style.setProperty('--tiltY', (x *  4).toFixed(2) + 'deg');
+    });
+  </script>
+</body>
+</html>

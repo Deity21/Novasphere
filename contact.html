@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="has-transitions">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — NovaSphere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+<header class="ns-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="88" height="88" />
+        NovaSphere
+        </a>
+    <nav id="nav" class="nav">
+      <a href="index.html#services">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="company.html">Company</a>
+      <a href="blog.html">Blog</a>
+      <a class="btn btn-primary" href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-ctrls"><button id="themeToggle" class="icon-btn"><i class="fa-regular fa-moon"></i></button><button id="hamburger" class="icon-btn"><i class="fa-solid fa-bars-staggered"></i></button></div>
+  </div>
+</header>
+
+<main>
+  <section class="container page-hero" id="talk">
+    <h1>Contact</h1>
+    <p class="muted">Tell us about your project. Get a quote or book a call.</p>
+  </section>
+
+  <section class="container contact-tabs">
+    <div class="tab-buttons">
+      <button class="tab active" data-target="#contactForm"><i class="fa-regular fa-envelope"></i> Contact</button>
+      <button class="tab" data-target="#quoteForm"><i class="fa-solid fa-calculator"></i> Make a quote</button>
+      <button class="tab" data-target="#callForm"><i class="fa-regular fa-calendar-check"></i> Book a call</button>
+    </div>
+
+    <div class="tab-panels">
+      <!-- Contact form -->
+      <form id="contactForm" class="form active" data-form="contact">
+        <div class="two">
+          <label>Full name<input required name="name" type="text" placeholder="Jane Doe"/></label>
+          <label>Email<input required name="email" type="email" placeholder="you@company.com"/></label>
+        </div>
+        <label>Message<textarea required name="message" rows="5" placeholder="What are we building?"></textarea></label>
+        <button class="btn btn-primary" type="submit">Send</button>
+      </form>
+
+      <!-- Quote form -->
+      <form id="quoteForm" class="form" data-form="quote">
+        <div class="two">
+          <label>Company<input name="company" type="text" placeholder="Acme Inc."/></label>
+          <label>Budget
+            <select name="budget">
+              <option value="10-20k">$10k–$20k</option>
+              <option value="20-50k">$20k–$50k</option>
+              <option value="50-150k">$50k–$150k</option>
+              <option value="150k+">$150k+</option>
+            </select>
+          </label>
+        </div>
+        <div class="two">
+          <label>Project type
+            <select name="type">
+              <option>Roblox game</option>
+              <option>Casino website</option>
+              <option>Games</option>
+              <option>UI/UX</option>
+              <option>Web/App</option>
+            </select>
+          </label>
+          <label>Timeline
+            <select name="timeline">
+              <option>2–4 weeks</option>
+              <option>1–3 months</option>
+              <option>3–6 months</option>
+              <option>Ongoing</option>
+            </select>
+          </label>
+        </div>
+        <label>Scope<textarea name="scope" rows="5" placeholder="Features, platforms, references…"></textarea></label>
+        <button class="btn btn-primary" type="submit">Request quote</button>
+      </form>
+
+      <!-- Call form -->
+      <form id="callForm" class="form" data-form="call">
+        <div class="two">
+          <label>Name<input name="name" type="text" placeholder="Your name"/></label>
+          <label>Email<input name="email" type="email" placeholder="you@company.com"/></label>
+        </div>
+        <label>Preferred time<input name="time" type="datetime-local"/></label>
+        <p class="muted">Prefer Calendly? <a class="link" href="#" target="_blank">Pick a slot</a>.</p>
+        <button class="btn btn-primary" type="submit">Request call</button>
+      </form>
+    </div>
+
+    <div id="formToast" class="toast">Sending…</div>
+  </section>
+</main>
+
+<footer class="ns-footer">
+  <div class="container legal"><span>© <span id="year"></span> NovaSphere</span><span class="muted">All rights reserved</span></div>
+</footer>
+
+<!-- Optional EmailJS (uncomment + configure)
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>(function(){emailjs.init("YOUR_PUBLIC_KEY");})();</script>
+-->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  const hamburger=document.getElementById('hamburger'),nav=document.getElementById('nav');if(hamburger&&nav){hamburger.onclick=()=>nav.classList.toggle('open');}
+  AOS.init({duration:650,once:true,offset:70});
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+  // Contact tabs
+  document.querySelectorAll('.contact-tabs .tab-buttons .tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.contact-tabs .tab-buttons .tab').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.contact-tabs .form').forEach(p => p.classList.remove('active'));
+      const target = document.querySelector(btn.dataset.target);
+      if(target) target.classList.add('active');
+    });
+  });
+
+  // Toast + dummy submit
+  const toast = document.getElementById('formToast');
+  const showToast = (msg) => { toast.textContent=msg; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),2600); };
+  document.querySelectorAll('form[data-form]').forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Sending…');
+      setTimeout(()=> showToast('Sent! We’ll reply shortly.'), 1200);
+      form.reset();
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-ready');
+  });
+</script>
+</body>
+</html>

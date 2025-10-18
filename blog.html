@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="has-transitions">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mini blog — NovaSphere</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css"/>
+</head>
+<body>
+<header class="ns-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="88" height="88" />
+        NovaSphere
+        </a>
+    <nav id="nav" class="nav">
+      <a href="index.html#services">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="company.html">Company</a>
+      <a href="blog.html">Blog</a>
+      <a class="btn btn-primary" href="contact.html">Contact</a>
+    </nav>
+    <div class="nav-ctrls"><button id="themeToggle" class="icon-btn"><i class="fa-regular fa-moon"></i></button><button id="hamburger" class="icon-btn"><i class="fa-solid fa-bars-staggered"></i></button></div>
+  </div>
+</header>
+
+<main>
+  <section class="container page-hero">
+    <h1>Mini blog</h1>
+    <p class="muted">Short notes on design, engineering, and shipping better things.</p>
+  </section>
+
+  <section class="container blog-grid">
+    <article class="blog-card">
+      <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=1200&auto=format&fit=crop" alt="cover"/>
+      <div class="body">
+        <h3>Ship then iterate</h3>
+        <p class="muted">Why launching a thin slice beats perfect plans every time.</p>
+        <a class="link" href="#">Read</a>
+      </div>
+    </article>
+    <article class="blog-card">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="cover"/>
+      <div class="body">
+        <h3>Design tokens done right</h3>
+        <p class="muted">Scalable systems for multi-brand, multi-platform products.</p>
+        <a class="link" href="#">Read</a>
+      </div>
+    </article>
+    <article class="blog-card">
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop" alt="cover"/>
+      <div class="body">
+        <h3>Latency budgets</h3>
+        <p class="muted">Keeping pages snappy with smart budgets and audits.</p>
+        <a class="link" href="#">Read</a>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer class="ns-footer">
+  <div class="container legal"><span>© <span id="year"></span> NovaSphere</span><span class="muted">All rights reserved</span></div>
+</footer>
+
+<script>
+  const hamburger=document.getElementById('hamburger'),nav=document.getElementById('nav');if(hamburger&&nav){hamburger.onclick=()=>nav.classList.toggle('open');}
+  document.getElementById('year').textContent=new Date().getFullYear();
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('page-ready');
+  });
+</script>
+</body>
+</html>
