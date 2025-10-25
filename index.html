@@ -1,190 +1,326 @@
 <!DOCTYPE html>
-<html lang="en" class="has-transitions">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NovaSphere • Digital Product Studio</title>
-  <meta name="description" content="NovaSphere — We make apps, games, websites & brands. A digital studio for creative innovators." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+  <meta name="description" content="NovaSphere — a modern digital product studio crafting apps, games, websites & brands.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css"/>
-  <link rel="stylesheet" href="assets/css/styles.css"/>
-  
+  <link rel="stylesheet" href="assets/css/nova.css">
 </head>
 <body>
 
-<header class="ns-header">
+<!-- ===================== HEADER ===================== -->
+<header class="nav-header">
   <div class="container nav-wrap">
-    <a class="brand" href="index.html">
-      <img class="brand-logo" src="assets/img/Nova.png" alt="NovaSphere logo" width="88" height="88" />
-      NovaSphere
+    <a href="#" class="brand">
+      <img src="assets/img/Nova.png" alt="NovaSphere Logo" width="70" height="70">
+      <span>NovaSphere</span>
     </a>
-    <nav id="nav" class="nav">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
+    <nav class="nav">
       <a href="projects.html">Projects</a>
-      <a href="#testimonials">Testimonials</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html" class="btn btn-primary">Contact</a>
+      
+      <a href="#team">Team</a>
+      <a href="company.html">About</a>
+      <a href="contact.html" class="btn btn-primary">Request a quote</a>
     </nav>
-    <div class="nav-ctrls">
-      <button id="themeToggle" class="icon-btn"><i class="fa-regular fa-moon"></i></button>
-      <button id="hamburger" class="icon-btn"><i class="fa-solid fa-bars-staggered"></i></button>
-    </div>
+    <button id="hamburger"><i class="fa-solid fa-bars"></i></button>
   </div>
 </header>
 
-<main>
-  <!-- Hero -->
-  <section class="hero container">
-    <div class="hero-left" data-aos="fade-right">
-      <p class="eyebrow">
-        700+ Projects completed ✦ Based in London, UK
-        <img class="flag" style="height:.95em;width:auto;margin-left:.35em;vertical-align:-.12em"
-          src="https://cdn.jsdelivr.net/gh/lipis/flag-icons/flags/4x3/gb.svg" alt="UK" loading="lazy">
-      </p>
-      <h1 class="display">We make <span class="grad">apps, games, websites</span><br>& brands</h1>
-      <p class="muted">From concept to code, we craft digital experiences that delight, scale, and convert.</p>
-      <div class="cta-row">
-        <a class="btn btn-primary btn-lg" href="contact.html#talk"><i class="fa-regular fa-message"></i> Let's talk</a>
-        <div class="avatar-stack">
-          <img src="https://i.pravatar.cc/60?img=11" alt="client"/>
-          <img src="https://i.pravatar.cc/60?img=15" alt="client"/>
-          <img src="https://i.pravatar.cc/60?img=5" alt="client"/>
+<!-- ===================== HERO VIDEO SECTION ===================== -->
+<!-- ===================== HERO VIDEO SECTION ===================== -->
+<section class="hero">
+  <div class="home_hero-video_wrapper">
+    <div class="home_hero-video_embed w-embed w-iframe">
+      <div style="position: relative; padding-top: 53.125%; width: 100%;">
+        <iframe id="kinescope-player"
+          src="https://kinescope.io/47s5ehpSk3ujKpgTwoVTbr"
+          allow="autoplay; fullscreen; picture-in-picture; encrypted-media; gyroscope; accelerometer; clipboard-write; screen-wake-lock;"
+          frameborder="0"
+          allowfullscreen
+          style="position: absolute; width: 100%; height: 100%; top: 0; left: 0;">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Mobile & Web App Development</h1>
+    <p>We help startups and enterprises design, build and launch world-class digital products.</p>
+    <a href="contact.html" class="btn btn-dark">Contact us</a>
+  </div>
+</section>
+
+
+<!-- ===================== CLIENTS / PARTNERS ===================== -->
+<!-- ===================== LOGO STRIP ===================== -->
+<section class="partners logo-strip">
+  <div class="logo-strip__rail">
+    <div class="logo-strip__track">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39e772f4dc85f26e81_Brand-1.svg" alt="LXP IThub">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39fb0cd7e14a0f61d3_Brand-2.svg" alt="Trassir">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39a087d1edd8b38c6c_Brand-3.svg" alt="Energo">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb392e593541d4caf253_Brand-4.svg" alt="Skuratov">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39611b18282e1771f3_Brand-5.svg" alt="SOAK">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb3a91b4fed521dd36b6_Brand-7.svg" alt="Plonq">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb3b85d7b234e0b6d983_Brand-8.svg" alt="Smartway">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb3c855536808b515518_Brand-10.svg" alt="Medcare">
+    </div>
+    <div class="logo-strip__track">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39e772f4dc85f26e81_Brand-1.svg" alt="LXP IThub">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39fb0cd7e14a0f61d3_Brand-2.svg" alt="Trassir">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39a087d1edd8b38c6c_Brand-3.svg" alt="Energo">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb392e593541d4caf253_Brand-4.svg" alt="Skuratov">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb39611b18282e1771f3_Brand-5.svg" alt="SOAK">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb3a91b4fed521dd36b6_Brand-7.svg" alt="Plonq">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb3b85d7b234e0b6d983_Brand-8.svg" alt="Smartway">
+      <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67c6eb3c855536808b515518_Brand-10.svg" alt="Medcare">
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== PROJECTS ===================== -->
+<section id="projects" class="projects">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Projects</h2>
+
+    <div class="projects-grid">
+      <!-- Energo -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="50">
+        <div class="project-video">
+          <iframe src="https://kinescope.io/embed/g5tUVwcp4YaqWiam6w31pY" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
         </div>
-        <span class="mini-note">We get <b>booked fast</b> 🔥</span>
+        <div class="project-info">
+          <h3>Energo — Powerbank renting app</h3>
+          <p>IoT, Chats, 1M active users, 6.6K reviews on the App Store and Google Play.</p>
+        </div>
       </div>
-    </div>
-    <div class="hero-right" data-aos="zoom-in">
-      <div class="hero-card">
-        <div class="hc-top"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-        <img class="mock" data-parallax="0.12" src="assets/img/samp4.jpg" alt="Showcase placeholder"/>
-      </div>
-    </div>
-  </section>
 
-  <!-- About -->
-  <section id="about" class="container" data-aos="fade-up">
-    <h2>About NovaSphere</h2>
-    <p class="muted">We are a multidisciplinary team of designers, engineers, and strategists helping brands make their mark through technology and creativity.</p>
-    <div class="stats-grid">
-      <div><h3>700+</h3><p>Projects Completed</p></div>
-      <div><h3>50+</h3><p>Global Clients</p></div>
-      <div><h3>8+</h3><p>Years Experience</p></div>
-      <div><h3>98%</h3><p>Client Retention</p></div>
-    </div>
-  </section>
-
-  <!-- Services -->
-  <section id="services" class="container services">
-    <h2 data-aos="fade-up">What we do</h2>
-    <div class="grid-3">
-      <div class="card" data-aos="fade-up" data-aos-delay="50">
-        <i class="fa-solid fa-pen-ruler big"></i>
-        <h3>Design</h3>
-        <p class="muted">UI/UX, wireframes, systems, and animated prototypes.</p>
+      <!-- KEM -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="150">
+        <div class="project-video">
+          <iframe src="https://kinescope.io/embed/qiSWjmpvzqQxfSW2LU3qBa" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+        </div>
+        <div class="project-info">
+          <h3>KEM — Mobile payment platform in Kuwait</h3>
+          <p>Fintech, Credit card linking, QR codes, $1M in investments.</p>
+        </div>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="150">
-        <i class="fa-solid fa-code big"></i>
-        <h3>Development</h3>
-        <p class="muted">Apps, websites & games — robust, scalable, and fast.</p>
-      </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="250">
-        <i class="fa-solid fa-wand-magic-sparkles big"></i>
-        <h3>Branding</h3>
-        <p class="muted">Naming, identity, guidelines, and launch campaigns.</p>
-      </div>
-    </div>
-  </section>
 
-  <!-- Process -->
-  <section class="container" id="process" data-aos="fade-up">
-    <h2>Our Process</h2>
-    <div class="process-grid">
-      <div class="process-step"><i class="fa-solid fa-lightbulb big"></i><h4>1. Discovery</h4><p>We dive into your goals, audience, and product vision.</p></div>
-      <div class="process-step"><i class="fa-solid fa-palette big"></i><h4>2. Design</h4><p>We craft stunning visuals and user-friendly interfaces.</p></div>
-      <div class="process-step"><i class="fa-solid fa-gears big"></i><h4>3. Build</h4><p>We develop fast, secure, and scalable digital products.</p></div>
-      <div class="process-step"><i class="fa-solid fa-rocket big"></i><h4>4. Launch</h4><p>We deploy, monitor, and help you grow your product.</p></div>
-    </div>
-  </section>
+      <!-- WAW -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="250">
+        <div class="project-video">
+          <iframe src="https://kinescope.io/embed/t1wBTNpSjwQJ8HtSQVu39o" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
+        </div>
+        <div class="project-info">
+          <h3>WAW — App with coupons & lotteries for Egypt</h3>
+          <p>E-commerce, Maps & GPS, 130K active users.</p>
+        </div>
+      </div>
 
-  <!-- Featured Case -->
-  <section class="container featured" id="featured">
-    <div class="featured-card" data-aos="fade-up">
-      <div class="fc-media"><img src="assets/img/isoraa.png" alt="Case preview"/></div>
-      <div class="fc-body">
-        <div class="pill-row"><span class="pill">#UX Audit</span><span class="pill">#Product Redesign</span><span class="pill">#Web Dev</span></div>
-        <h3>Optimizing GRC software for top institutions</h3>
-        <ul class="meta">
-          <li><b>Client:</b> SaltyCloud, Texas, USA</li>
-          <li><b>Stack:</b> React, Python, AWS</li>
-          <li><b>Timeline:</b> 12 months</li>
-        </ul>
-        <a class="btn btn-secondary" href="projects.html">Explore case study</a>
+      <!-- Broex -->
+      <div class="project-card" data-aos="fade-up" data-aos-delay="350">
+        <div class="project-video">
+          <img src="https://cdn.prod.website-files.com/67979d011457a45dd6d75e23/67ae09d760ac31a8423c2ace_Frame%201321315482%20(5).webp" alt="Broex">
+        </div>
+        <div class="project-info">
+          <h3>Broex — Multi-currency cryptowallet</h3>
+          <p>Fintech, Investment & trading, Cross-platform app.</p>
+        </div>
       </div>
     </div>
-  </section>
 
-  <!-- Testimonials -->
-  <section class="container" id="testimonials">
-    <div class="section-head"><h2 data-aos="fade-up">What Clients Say</h2></div>
-    <div class="swiper" data-aos="fade-up">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide t-card"><p>“NovaSphere turned our vision into a sleek SaaS app — incredible speed.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=7"/><div><b>Michelle</b><span>COO, Fintech</span></div></div></div>
-        <div class="swiper-slide t-card"><p>“They designed and built a casino platform that performs flawlessly.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=3"/><div><b>Arman</b><span>Founder, Gaming</span></div></div></div>
-        <div class="swiper-slide t-card"><p>“The team’s attention to detail and animations blew us away.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=12"/><div><b>Ola</b><span>CTO, Health</span></div></div></div>
-        <div class="swiper-slide t-card"><p>“Our brand launch went viral thanks to their design strategy.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=14"/><div><b>Camila</b><span>CMO, Fashion</span></div></div></div>
-        <div class="swiper-slide t-card"><p>“Phenomenal team. Always responsive, always ahead of schedule.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=19"/><div><b>Lucas</b><span>Startup Founder</span></div></div></div>
-        <div class="swiper-slide t-card"><p>“Animations and transitions made our product shine — A+ work.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=27"/><div><b>Yasmin</b><span>CEO, Tech Studio</span></div></div></div>
-        <div class="swiper-slide t-card"><p>“They deliver enterprise-quality work for startups — a rare find.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=30"/><div><b>Daniel</b><span>Manager, SaaS</span></div></div></div>
-        <div class="swiper-slide t-card"><p>“10/10 collaboration — design, dev, and brand alignment done right.”</p><div class="t-meta"><img src="https://i.pravatar.cc/80?img=40"/><div><b>Sophia</b><span>Creative Director</span></div></div></div>
-      </div>
-      <div class="swiper-pagination"></div>
+    <div class="center-btn">
+      <a href="projects.html" class="btn btn-dark">See all projects</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta container" data-aos="zoom-in">
-    <div class="cta-inner">
-      <h3>Got a project? Let’s build something people love.</h3>
-      <div>
-        <a class="btn btn-primary" href="contact.html#quote">Get a quote</a>
-        <a class="btn" href="contact.html#call">Book a call</a>
+
+<!-- ===================== ABOUT / REVIEWS ===================== -->
+<section id="about" class="about">
+  <div class="container about-wrap">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1600" alt="Team working">
+    </div>
+    <div class="about-text">
+      <h2>About us</h2>
+      <p>We are a multidisciplinary team helping global clients create award-winning products across web, mobile, and blockchain. NovaSphere is known for precision, performance, and design excellence.</p>
+      <div class="review">
+        <div class="reviewer">
+          <img src="https://i.pravatar.cc/80?img=7" alt="Reviewer">
+          <div>
+            <h4>Lou Severine</h4>
+            <p>CEO, Contentplace</p>
+          </div>
+        </div>
+        <blockquote>“NovaSphere helped us build the perfect MVP. Their communication, speed, and results exceeded expectations.”</blockquote>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
-<footer class="ns-footer">
+<!-- ===================== SERVICES ===================== -->
+<section id="services" class="services">
+  <div class="container">
+    <h2>Our Services</h2>
+    <div class="service-groups">
+      <div class="service-category">
+        <h4>Analytics</h4>
+        <div class="tags">
+          <span>UX Audit</span><span>Discovery Phase</span><span>System Analysis</span>
+        </div>
+      </div>
+      <div class="service-category">
+        <h4>Design</h4>
+        <div class="tags">
+          <span>UI/UX Design</span><span>Web Design</span><span>Mobile App Design</span><span>Brand Identity</span>
+        </div>
+      </div>
+      <div class="service-category">
+        <h4>Development</h4>
+        <div class="tags">
+          <span>Web Development</span><span>Mobile Apps</span><span>Blockchain</span><span>AI Integrations</span><span>MVP Launch</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TEAM SLIDER ===================== -->
+<section id="team" class="team-section">
+  <div class="container">
+    <h2 class="section-title" data-aos="fade-up">Need a team for your project?</h2>
+  </div>
+
+  <div class="swiper team-swiper">
+    <div class="swiper-wrapper">
+      <!-- Slide 1 -->
+      <div class="swiper-slide team-slide">
+        <div class="team-content">
+          <div class="team-text">
+            <h3>Hi! I’m Sergey, a CTO, and I specialize in solving business challenges with technology.</h3>
+            <p>My team and I have developed apps for EnerGO, Plonq, and Izumator. I’d be happy to learn more about your project and design business solutions that work best for you.</p>
+            <a href="#contact" class="btn btn-dark">Request a quote</a>
+          </div>
+          <div class="team-image">
+            <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/679204bffe4182e7da8d2cd5_IMG%20(2).webp" alt="Sergey">
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide team-slide">
+        <div class="team-content">
+          <div class="team-text">
+            <h3>Hi! I’m Sergey, a seasoned team lead who builds robust backend architectures.</h3>
+            <p>I’ve led development of Infijoy, ERP-School, and WAW. I’m ready to design your project’s architecture with scalability and security in mind.</p>
+            <a href="#contact" class="btn btn-dark">Request a quote</a>
+          </div>
+          <div class="team-image">
+            <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/67920047630ed56076edfa93_IMG%20(1).webp" alt="Sergey">
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide team-slide">
+        <div class="team-content">
+          <div class="team-text">
+            <h3>Hi! I’m Anton, a CTO, and I’m passionate about mobile technologies.</h3>
+            <p>I’ve led the development of Moduse and Broex apps. Would love to assist in building and launching your project.</p>
+            <a href="#contact" class="btn btn-dark">Request a quote</a>
+          </div>
+          <div class="team-image">
+            <img src="https://cdn.prod.website-files.com/678ccce8ba65076a9fdb8a49/679204e188331377b38d5f43_IMG%20(3).webp" alt="Anton">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination + Navigation -->
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+
+<!-- ===================== CTA ===================== -->
+<section id="contact" class="cta">
+  <div class="container">
+    <h3>Let’s build something exceptional together.</h3>
+    <a href="mailto:hello@novasphere.co" class="btn btn-primary">Get in touch</a>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
   <div class="container footer-grid">
     <div>
-      <div class="brand b-lg"><span class="brand-mark">◔</span> NovaSphere</div>
-      <p class="muted">Design • Development • Branding — crafted with precision and care.</p>
-      <div class="newsletter">
-        <input type="email" placeholder="Subscribe for updates">
-        <button><i class="fa-solid fa-paper-plane"></i></button>
-      </div>
-      <div class="socials">
-        <a href="https://www.instagram.com/novasphereco" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a href="https://t.me/NovaSphereco" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
-        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
-        <a href="#" aria-label="Dribbble"><i class="fa-brands fa-dribbble"></i></a>
-      </div>
+      <h4>NovaSphere</h4>
+      <p>Software development studio — Apps, Games, Web, and AI solutions.</p>
     </div>
-    <div><h4>Studio</h4><ul><li><a href="#about">About</a></li><li><a href="#process">Process</a></li><li><a href="company.html#team">Team</a></li></ul></div>
-    <div><h4>Work</h4><ul><li><a href="projects.html">Projects</a></li><li><a href="#featured">Case Studies</a></li></ul></div>
-    <div><h4>Contact</h4><ul><li><a href="contact.html#quote">Get a quote</a></li><li><a href="contact.html#call">Book a call</a></li><li><a href="mailto:hello@novasphere.co">Email us</a></li></ul></div>
+    <div>
+      <h4>Technologies</h4>
+      <ul>
+        <li>React</li><li>Python</li><li>Solidity</li><li>Unity</li><li>Node.js</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Services</h4>
+      <ul>
+        <li>Web Development</li><li>Mobile Apps</li><li>UI/UX Design</li><li>MVP Launch</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Industries</h4>
+      <ul>
+        <li>Gaming</li><li>Fintech</li><li>AI</li><li>Web3</li><li>SaaS</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>hello@novasphere.co</p>
+      <p>London, UK</p>
+    </div>
   </div>
-  <div class="container legal"><span>© <span id="year"></span> NovaSphere. All rights reserved.</span></div>
+  <div class="legal">© <span id="year"></span> NovaSphere. All rights reserved.</div>
 </footer>
 
-<!-- JS -->
+<script>
+document.querySelector("#year").textContent = new Date().getFullYear();
+</script>
+<!-- Swiper CDN -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="assets/js/app.js"></script>
+
+<script>
+  const teamSwiper = new Swiper(".team-swiper", {
+    loop: true,
+    speed: 800,
+    slidesPerView: 1,
+    spaceBetween: 40,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+  });
+</script>
+
+<script>
+const rail = document.querySelector('.logo-strip__rail');
+rail.addEventListener('mouseenter', () => rail.style.animationPlayState = 'paused');
+rail.addEventListener('mouseleave', () => rail.style.animationPlayState = 'running');
+</script>
 
 </body>
 </html>
