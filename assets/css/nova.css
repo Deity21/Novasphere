@@ -543,3 +543,29 @@ blockquote{font-style:italic;color:#333;}
   }
 
 }
+@media (max-width: 768px) {
+
+  .hero {
+    min-height: 62vh;
+    padding: 9rem 1.5rem 4rem;
+    background:
+      linear-gradient(
+        rgba(0,0,0,0.55),
+        rgba(0,0,0,0.75)
+      ),
+      url('../img/mobile-hero.jpg');
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .home_hero-video_wrapper,
+  .hero-overlay {
+    display: none;
+  }
+
+}
