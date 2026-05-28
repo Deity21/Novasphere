@@ -553,7 +553,7 @@ blockquote{font-style:italic;color:#333;}
         rgba(0,0,0,0.55),
         rgba(0,0,0,0.75)
       ),
-      url('../img/mobile-hero.png');
+      url('/assets/img/mobile-hero.png');
 
     background-size: cover;
     background-position: center;
