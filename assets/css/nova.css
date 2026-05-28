@@ -449,97 +449,90 @@ blockquote{font-style:italic;color:#333;}
 /* Responsive */
 @media (max-width: 768px) {
 
-  .nav {
-    display: none;
-    position: absolute;
-    top: 80px;
-    right: 20px;
+  .nav-header {
+    position: fixed;
+    top: 0;
+    left: 0;
     background: #fff;
+  }
+
+  .nav {
+    position: fixed;
+    top: 90px;
+    right: -100%;
+    width: 260px;
+    background: #ffffff;
+    display: flex;
     flex-direction: column;
-    padding: 1.5em;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    width: 220px;
-    gap: 1em;
+    gap: 1.2rem;
+    padding: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.12);
+    transition: 0.35s ease;
+    z-index: 9999;
   }
 
   .nav.open {
-    display: flex;
+    right: 20px;
+  }
+
+  .nav a {
+    font-size: 1rem;
+    font-weight: 600;
   }
 
   #hamburger {
     display: block;
+    font-size: 2rem;
+    color: #0d8bff;
     cursor: pointer;
+    z-index: 10000;
   }
+
 }
 
 /* ===== MOBILE HERO FIX ===== */
 @media (max-width: 768px) {
 
   .hero {
-    min-height: 82vh;
+    min-height: 62vh;
     height: auto;
-    padding: 7rem 1.5rem 4rem;
+    padding: 9rem 1.5rem 4rem;
     background:
-      radial-gradient(circle at top, rgba(107,91,255,0.35), transparent 45%),
-      linear-gradient(180deg, #050505 0%, #101010 45%, #161616 100%);
+      radial-gradient(circle at top, rgba(107,91,255,0.25), transparent 45%),
+      linear-gradient(180deg, #050505 0%, #101010 55%, #171717 100%);
     overflow: hidden;
+    display: flex;
+    align-items: center;
   }
 
   .home_hero-video_wrapper {
-    opacity: 0.18;
-    pointer-events: none;
+    display: none;
   }
 
   .hero-overlay {
-    background:
-      linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.55),
-        rgba(0,0,0,0.78)
-      );
+    display: none;
   }
 
   .hero-content {
-    position: relative;
-    z-index: 5;
+    width: 100%;
     max-width: 100%;
     padding: 0;
     transform: none;
   }
 
   .hero-content h1 {
-    font-size: 3rem;
+    font-size: 2.7rem;
     line-height: 1.05;
-    font-weight: 900;
     letter-spacing: -2px;
     margin-bottom: 1rem;
-    color: #fff;
   }
 
   .hero-content p {
-    font-size: 1.08rem;
+    font-size: 1.05rem;
     line-height: 1.7;
-    color: rgba(255,255,255,0.82);
     margin-bottom: 2rem;
-  }
-
-  .hero-content .btn-dark {
-    width: 100%;
-    max-width: 260px;
-    border-radius: 18px;
-    font-size: 1rem;
-    padding: 1rem 1.4rem;
-    background: linear-gradient(
-      135deg,
-      #6b5bff,
-      #8d7bff
-    );
-    box-shadow: 0 10px 35px rgba(107,91,255,0.35);
-  }
-
-  .hero-content .btn-dark:hover {
-    transform: translateY(-2px);
+    color: rgba(255,255,255,0.78);
   }
 
 }
