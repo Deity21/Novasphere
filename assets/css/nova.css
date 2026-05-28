@@ -447,3 +447,28 @@ blockquote{font-style:italic;color:#333;}
 .legal{text-align:center;color:var(--muted);font-size:.9rem;border-top:1px solid #ddd;padding-top:1em;}
 
 /* Responsive */
+@media (max-width: 768px) {
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: #fff;
+    flex-direction: column;
+    padding: 1.5em;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    width: 220px;
+    gap: 1em;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  #hamburger {
+    display: block;
+    cursor: pointer;
+  }
+}
